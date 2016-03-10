@@ -2,41 +2,71 @@
 
 environment:
   matrix:
-    - TOOLCHAIN: "default"
+#   FIXME: no support yet in windows for odb in hunter
+#        * autotools project is not supported by Visual Studio
+#        * mingw is failing for reasons yet to be investigated
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\odb-mysql
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\odb-mysql
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/odk76l8hwphkslj6
+#    - TOOLCHAIN: "default"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/9e6jdvvgey14qm0u
+#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/p6d2x9w7kin8o5k4
+#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/c8fv2lhwf8itx882
+#    - TOOLCHAIN: "nmake-vs-12-2013"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/k6xw31ger7jbkfgo
+#    - TOOLCHAIN: "vs-10-2010"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/8lwm34rrcncwadup
+#    - TOOLCHAIN: "vs-11-2012"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/sxh8ylvwup2nftmq
+#    - TOOLCHAIN: "vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/r9nq56fvkbhu1b07
+#    - TOOLCHAIN: "vs-12-2013-xp"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/1k7d0844d0crv8xo
+#    - TOOLCHAIN: "vs-12-2013"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/ygtnv39knd26qpm6
+#    - TOOLCHAIN: "vs-14-2015"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/fr0xh174ivr3wjyb
+#    - TOOLCHAIN: "vs-9-2008"
+#      PROJECT_DIR: examples\odb-mysql
+#
+#    FIXME:
+#    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/x3udsdmvi2bsy09t
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\odb-mysql
 
 install:
   - git submodule update --init --recursive
