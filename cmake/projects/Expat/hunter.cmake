@@ -17,7 +17,7 @@ hunter_add_version(
     URL
     "https://github.com/alamaison/expat/archive/R_2_1_0-hunter.tar.gz"
     SHA1
-    41fdd3c882a2270c65aba8104615b8976af6acbe
+    87227472715212f636c624b656a86614519edcd5
 )
 
 hunter_add_version(
@@ -28,7 +28,7 @@ hunter_add_version(
     URL
     "https://github.com/alamaison/expat/archive/R_2_1_1-hunter.tar.gz"
     SHA1
-    10f3b5856624892bf0713c018123e4a01dbbc008
+    6b7669be7bc36814c0a7a62cf17342d0a708a51a
 )
 
 hunter_cmake_args(
