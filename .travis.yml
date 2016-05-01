@@ -51,6 +51,39 @@ env:
 
 matrix:
   exclude:
+    # I don't know why gcc doesn't link to libdl although -dl is added
+    # to compile flags.
+    - os: linux
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=gcc-4-8
+
+    # boost compile error (cannot link to OpenSSL)
+    - os: linux
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # In this case the final binary is cannot be linked to OpenSSL with the following error message:
+    # /usr/bin/ld: /home/travis/build/ingenue/hunter/_testing/Hunter/_Base/ebe8903/e97794b/3d05f7a/Install/lib/libssl.a(s3_meth.o): relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+    - os: linux
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=sanitize-thread
+
+    # boost build error on OS X
+    - os: osx
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=clang-libstdcxx
+
+    # XCode builder (???) seg fault...
+    - os: osx
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=osx-10-9
+
+    # OpenSSL link error
+    - os: osx
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # I think this dies somewhere building boost...
+    - os: osx
+      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=analyze
+
+
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
