@@ -51,6 +51,24 @@ env:
 
 matrix:
   exclude:
+    # Lack of required C++11 level. Default uses only c++0x
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=default
+
+    # I'dont know what is the problem, build fails with error messages:
+    # clang: error: argument unused during compilation: '-pie'
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
+
+    # This version of libstdc++ has no array header
+    - os: osx
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
+
+    # Cannot link to OpenSSL
+    - os: osx
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
