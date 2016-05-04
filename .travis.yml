@@ -51,6 +51,8 @@ env:
 
 matrix:
   exclude:
+    # filtering bases on: https://travis-ci.org/ingenue/hunter/builds/126599632
+
     # Lack of required C++11 level. Default uses only c++0x
     - os: linux
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=default

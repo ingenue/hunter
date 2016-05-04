@@ -10,6 +10,8 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\msgpack
 
+    # filtering bases on: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.407
+
     # DISABLED: lack of support C++11
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
     #   PROJECT_DIR: examples\msgpack
