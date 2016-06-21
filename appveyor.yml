@@ -40,6 +40,7 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\PocoCpp
 
+    # Officially not supported: http://pocoproject.org/docs/99150-WindowsPlatformNotes.html
     #- TOOLCHAIN: "mingw"
     #  PROJECT_DIR: examples\PocoCpp
 
