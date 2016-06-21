@@ -40,8 +40,8 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\PocoCpp
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\PocoCpp
+    #- TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\PocoCpp
 
 install:
   # Python 3
