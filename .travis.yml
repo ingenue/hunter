@@ -41,10 +41,14 @@ matrix:
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=analyze
+
+      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738802
+      # - os: linux
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738803
+      # - os: linux
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=sanitize-address
     - os: linux
@@ -62,12 +66,16 @@ matrix:
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=analyze
+
+      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738811
+      # - os: osx
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=ios-nocodesign
+      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738812
+      # - os: osx
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738813
+      # - os: osx
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=analyze
     # }
 
 install:
