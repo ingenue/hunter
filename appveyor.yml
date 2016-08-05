@@ -39,6 +39,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\glfw
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\glfw
+
+
       # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.755/job/cf2mhsvainyya3lh
       # - TOOLCHAIN: "vs-9-2008"
       # - PROJECT_DIR: examples\glfw
