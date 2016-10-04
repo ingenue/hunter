@@ -43,13 +43,15 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=gcc-4-8
 
     # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+    # * https://travis-ci.org/ingenue/hunter/jobs/164816640
     # - os: linux
     #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/163974419
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-address
     - os: linux
@@ -71,13 +73,14 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign
 
     # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+    # * https://travis-ci.org/ingenue/hunter/jobs/164816649
     # - os: osx
     #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/163974428
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
     # }
 
     # Linux {
@@ -89,13 +92,14 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc-4-8
 
     # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+    # * https://travis-ci.org/ingenue/hunter/jobs/164816653
     # - os: linux
     #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/163974419
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-address
     - os: linux
@@ -117,13 +121,14 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign
 
     # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+    # * https://travis-ci.org/ingenue/hunter/jobs/164816662
     # - os: osx
     #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/163974428
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
     # }
 
 install:
