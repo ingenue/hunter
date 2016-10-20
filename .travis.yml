@@ -41,9 +41,8 @@ matrix:
       env: PROJECT_DIR=examples/CURL TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/CURL TOOLCHAIN=gcc-4-8
-      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157550169
-      # - os: linux
-      # - env: PROJECT_DIR=examples/CURL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      - env: PROJECT_DIR=examples/CURL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
       # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157550170
       # - os: linux
       # - env: PROJECT_DIR=examples/CURL TOOLCHAIN=analyze
@@ -65,12 +64,10 @@ matrix:
       env: PROJECT_DIR=examples/CURL TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/CURL TOOLCHAIN=osx-10-9
-      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157550178
-      # - os: osx
-      # - env: PROJECT_DIR=examples/CURL TOOLCHAIN=ios-nocodesign
-      # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157550179
-      # - os: osx
-      # - env: PROJECT_DIR=examples/CURL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+   - os: osx
+      - env: PROJECT_DIR=examples/CURL TOOLCHAIN=ios-nocodesign
+   - os: osx
+      - env: PROJECT_DIR=examples/CURL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
       # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157550180
       # - os: osx
       # - env: PROJECT_DIR=examples/CURL TOOLCHAIN=analyze
