@@ -29,12 +29,21 @@ hunter_add_version(
 
 if (ANDROID OR IOS)
   set(_curl_cmake_args
-      HAVE_GLIBC_STRERROR_R=1
       HAVE_GLIBC_STRERROR_R__TRYRUN_OUTPUT=""
-      HAVE_POSIX_STRERROR_R=0
       HAVE_POSIX_STRERROR_R__TRYRUN_OUTPUT=""
       HAVE_POLL_FINE_EXITCODE=0
   )
+  if (ANDROID)
+    list(APPEND _curl_cmake_args
+        HAVE_GLIBC_STRERROR_R=1
+        HAVE_POSIX_STRERROR_R=0
+    )
+  elseif(IOS)
+    list(APPEND _curl_cmake_args
+        HAVE_GLIBC_STRERROR_R=0
+        HAVE_POSIX_STRERROR_R=1
+    )
+  endif()
 else()
   set(_curl_cmake_args "")
 endif()
