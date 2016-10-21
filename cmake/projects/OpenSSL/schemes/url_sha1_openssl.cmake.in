@@ -27,7 +27,7 @@ hunter_test_string_not_empty("@HUNTER_PACKAGE_INSTALL_PREFIX@")
 hunter_test_string_not_empty("@HUNTER_PACKAGE_LICENSE_FILE@")
 hunter_test_string_not_empty("@HUNTER_GLOBAL_SCRIPT_DIR@")
 
-if(APPLE)
+if(APPLE AND NOT ANDROID)
   set(configure_command "./Configure")
   set(configure_opts "darwin64-x86_64-cc")
 else()
