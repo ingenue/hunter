@@ -104,18 +104,35 @@ macro(hunter_setup_msvc)
     set(_hunter_vcvarsall_env "VS${_hunter_vcvarsall_env}COMNTOOLS")
     set(_hunter_vcvarsall_path "$ENV{${_hunter_vcvarsall_env}}")
 
+    hunter_status_debug(
+        "Environment '${_hunter_vcvarsall_env}': '${_hunter_vcvarsall_path}'"
+    )
+    hunter_status_debug(
+        "CMAKE_VS_DEVENV_COMMAND: '${CMAKE_VS_DEVENV_COMMAND}'"
+    )
+
     string(COMPARE EQUAL "${_hunter_vcvarsall_path}" "" _is_empty)
     if(_is_empty)
       if(HUNTER_TESTING)
         # ignore error, see 'tests/hunter_setup_msvc/CMakeLists.txt'
       else()
-        hunter_internal_error(
-             "Environment variable ${_hunter_vcvarsall_env} is empty"
+        hunter_status_debug(
+            "Environment variable '${_hunter_vcvarsall_env}' is empty, analyzing CMAKE_VS_DEVENV_COMMAND"
         )
+        string(COMPARE EQUAL "${CMAKE_VS_DEVENV_COMMAND}" "" is_empty)
+        if(is_empty)
+          hunter_internal_error("CMAKE_VS_DEVENV_COMMAND is empty")
+        endif()
+        if(NOT IS_ABSOLUTE "${CMAKE_VS_DEVENV_COMMAND}")
+          hunter_internal_error("CMAKE_VS_DEVENV_COMMAND is not absolute")
+        endif()
+        get_filename_component(_hunter_vcvarsall_path "${CMAKE_VS_DEVENV_COMMAND}" DIRECTORY)
+        set(_hunter_vcvarsall_path "${_hunter_vcvarsall_path}/../../VC/Auxiliary/Build")
       endif()
+    else()
+      set(_hunter_vcvarsall_path "${_hunter_vcvarsall_path}/../../VC")
     endif()
 
-    set(_hunter_vcvarsall_path "${_hunter_vcvarsall_path}/../../VC")
     get_filename_component(
         _hunter_vcvarsall_path "${_hunter_vcvarsall_path}" ABSOLUTE
     )
