@@ -43,8 +43,9 @@ matrix:
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Catch TOOLCHAIN=clang-libstdcxx
+    # unsupported std::nullptr_t
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Catch TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=osx-10-11
     - os: osx
