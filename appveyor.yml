@@ -48,7 +48,6 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\libuv
 
-
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%

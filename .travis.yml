@@ -26,7 +26,7 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
+      
     # - os: linux
     #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
     # - os: linux
@@ -34,6 +34,9 @@ matrix:
     # - os: linux
     #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-leak
     
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
@@ -49,7 +52,7 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
+      
     # Broken:
     # - os: osx
     #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
