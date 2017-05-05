@@ -41,29 +41,28 @@ matrix:
 
     # }
 
-    #Apple currently only supports OpenCL 1.2
-        # OSX {
-#https://travis-ci.org/ingenue/hunter/jobs/180306958
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=default
-#https://travis-ci.org/ingenue/hunter/jobs/180306959
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=libcxx
-#https://travis-ci.org/ingenue/hunter/jobs/180306960
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=clang-libstdcxx
-#https://travis-ci.org/ingenue/hunter/jobs/180306961
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=osx-10-11
-#https://travis-ci.org/ingenue/hunter/jobs/180306962
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=ios-nocodesign-9-3
-#https://travis-ci.org/ingenue/hunter/jobs/180306963
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-#https://travis-ci.org/ingenue/hunter/jobs/180306964
-#    - os: osx
-#      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=analyze
+    # OSX {
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=default
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=libcxx
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=osx-10-11
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=ios-nocodesign-9-3
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      osx_image: xcode8.3
+      env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=analyze
     # }
 
 install:
