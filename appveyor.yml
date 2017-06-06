@@ -40,11 +40,13 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\Leptonica
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Leptonica
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1787/job/hf39dyhj0vwi859y#L5297
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\Leptonica
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Leptonica
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1787/job/6k2aqpemqf39vgoe#L4748
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Leptonica
 
 install:
   # Python 3
