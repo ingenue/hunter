@@ -75,10 +75,8 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/odb TOOLCHAIN=osx-10-9
 
-    # Support *.pc files
-    # * https://travis-ci.org/ingenue/hunter/jobs/105847707
-    # - os: osx
-    #   env: PROJECT_DIR=examples/odb TOOLCHAIN=ios-nocodesign
+    - os: osx
+      env: PROJECT_DIR=examples/odb TOOLCHAIN=ios-nocodesign
 
     - os: osx
       env: PROJECT_DIR=examples/odb TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
