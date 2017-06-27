@@ -28,6 +28,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=linux-mingw-w64
+    - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
@@ -75,6 +77,8 @@ matrix:
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=linux-mingw-w64
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=analyze
     - os: linux
@@ -127,6 +131,8 @@ matrix:
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=linux-mingw-w64
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=analyze
     - os: linux
@@ -184,6 +190,9 @@ matrix:
     # * https://travis-ci.org/ingenue/hunter/jobs/105856458
     # - os: linux
     #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=linux-mingw-w64
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105982178
@@ -248,6 +257,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=linux-mingw-w64
+    - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-address
@@ -301,6 +312,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=linux-mingw-w64
+    - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-address
@@ -346,6 +359,8 @@ matrix:
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=linux-mingw-w64
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/159627884
     # - os: linux
@@ -392,6 +407,8 @@ matrix:
     # Boost-random {
     - os: linux
       env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=linux-mingw-w64
 
     - os: osx
       osx_image: xcode8.2
