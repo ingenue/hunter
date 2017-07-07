@@ -56,8 +56,10 @@ matrix:
       env: PROJECT_DIR=examples/glog TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/glog TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/glog TOOLCHAIN=clang-libstdcxx
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/250708247
+    #- os: osx
+    #  env: PROJECT_DIR=examples/glog TOOLCHAIN=clang-libstdcxx
     - os: osx
       osx_image: xcode8.2
       env: PROJECT_DIR=examples/glog TOOLCHAIN=xcode-cxx98
