@@ -24,15 +24,10 @@ matrix:
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=gcc
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848277
-    # - os: linux
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848266
-    # - os: linux
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=analyze
-
+    - os: linux
+      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=sanitize-address
     - os: linux
@@ -53,18 +48,12 @@ matrix:
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=osx-10-11
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848276
-    # - os: osx
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=ios-nocodesign-9-3
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848265
-    # - os: osx
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848278
-    # - os: osx
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=analyze
+    - os: osx
+      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=ios-nocodesign-9-3
+    - os: osx
+      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=analyze
 
     # }
 
