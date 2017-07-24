@@ -88,7 +88,8 @@ install:
   # Install Python 3
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install gfortran; fi
+  # Install 'gfortran'
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install gcc; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
