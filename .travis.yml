@@ -19,41 +19,55 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=gcc
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846142
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846143
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=analyze
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846132
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=sanitize-address
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846133
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
-    #   env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+    #   env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=sanitize-thread
 
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=libcxx
+    #Removed: eigen requires c++11 and libstdcxx does not support all of c++11
+    #- os: osx
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=osx-10-11
+    # FIXME: ceres requires a toolchain file in is directory to be called to setup builds
+    #- os: osx
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=ios-nocodesign-9-3
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846142
+    #- os: osx
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: issue with glog
+    # * https://travis-ci.org/ingenue/hunter/jobs/105846143
+    #- os: osx
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=analyze
     # }
 
 install:
