@@ -62,8 +62,10 @@ matrix:
     #Removed: eigen requires c++11 and libstdcxx does not support all of c++11
     #- os: osx
     #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=osx-10-11
+    # FIXME: no fortran compiler found
+    # * https://travis-ci.org/ingenue/hunter/jobs/256904309#L752
+    #- os: osx
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=osx-10-11
     # FIXME: ceres requires a toolchain file in is directory to be called to setup builds
     #- os: osx
     #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=ios-nocodesign-9-3
