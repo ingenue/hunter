@@ -27,8 +27,11 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
+    # FIXME: issue with gfortran and CMAKE_EXE_LINKER_FLAGS="-stdlib=libstdc++"
+    # * https://github.com/ruslo/polly/pull/163
+    # * https://travis-ci.org/ingenue/hunter/jobs/257290915
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=gcc
     # FIXME: issue with glog
