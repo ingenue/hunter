@@ -9,32 +9,36 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    # disabled toolchains, msvc has no fortran compiler
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "nmake-vs-12-2013"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "vs-10-2010"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "vs-11-2012"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\ceres-solver-suitesparse
+    #- TOOLCHAIN: "vs-12-2013"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
+
+    #- TOOLCHAIN: "vs-14-2015"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse
 
     # FIXME: issue with glog
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/m4cnni7etx95m668
