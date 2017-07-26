@@ -43,9 +43,11 @@ matrix:
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=libcxx
-    # unsupported std::nullptr_t
+
+    #FIXME: https://github.com/ruslo/hunter/pull/758#issuecomment-293124510
     # - os: osx
     #   env: PROJECT_DIR=examples/Catch TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Catch TOOLCHAIN=osx-10-11
     - os: osx
