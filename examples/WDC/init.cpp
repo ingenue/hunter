@@ -1,5 +1,5 @@
 #include <webdav/client.hpp>
-
+#include <memory>
 #include <sstream>
 
 std::map<std::string, std::string> base_options = {
