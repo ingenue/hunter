@@ -20,12 +20,15 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/32
+    # - os: linux
+    #  env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/33
+    # http://en.cppreference.com/w/cpp/string/byte/atoi =)
+    # - os: linux
+    #  env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     
     # https://github.com/ruslo/polly/issues/32#issuecomment-122081810
     # - os: linux
