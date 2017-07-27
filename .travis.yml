@@ -20,9 +20,8 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=default
-    # https://github.com/CloudPolis/webdav-client-cpp/issues/32
-    # - os: linux
-    #  env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=gcc
     # https://github.com/CloudPolis/webdav-client-cpp/issues/33
@@ -49,8 +48,9 @@ matrix:
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/32
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=osx-10-11
     - os: osx
