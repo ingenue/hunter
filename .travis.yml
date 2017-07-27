@@ -53,10 +53,12 @@ matrix:
     #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/WDC TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/WDC TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/35
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=ios-nocodesign-9-3
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/34
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # https://github.com/ruslo/polly/issues/32#issuecomment-122081810
     # - os: osx
     #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=analyze
