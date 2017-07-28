@@ -10,12 +10,5 @@ project(download-wdc)
 hunter_add_package(WDC)
 find_package(WDC CONFIG REQUIRED)
 
-hunter_add_package(OpenSSL)
-find_package(OpenSSL REQUIRED)
-hunter_add_package(CURL)
-find_package(CURL CONFIG REQUIRED)
-hunter_add_package(pugixml)
-find_package(pugixml CONFIG REQUIRED)
-
 add_executable(example init.cpp)
 target_link_libraries(example WDC::libwdc)
