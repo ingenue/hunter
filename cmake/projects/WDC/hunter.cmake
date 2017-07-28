@@ -10,7 +10,7 @@ hunter_add_version(
     PACKAGE_NAME WDC
     VERSION "1.0.8"
     URL "https://github.com/CloudPolis/webdav-client-cpp/archive/v1.0.8.tar.gz"
-    SHA1 809bdedb96b363e8702c4c2447b004a4caeccb23
+    SHA1 10db2c64fd9165011c9caaea572e07bf97c817cd
 )
 
 hunter_add_version(
