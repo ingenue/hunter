@@ -18,4 +18,4 @@ hunter_add_package(pugixml)
 find_package(pugixml CONFIG REQUIRED)
 
 add_executable(example init.cpp)
-target_link_libraries(example wdc)
+target_link_libraries(example WDC::libwdc)
