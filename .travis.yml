@@ -19,41 +19,48 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=default
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=gcc
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/33
+    # http://en.cppreference.com/w/cpp/string/byte/atoi =)
+    # - os: linux
+    #  env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    
+    # https://github.com/ruslo/polly/issues/32#issuecomment-122081810
+    # - os: linux
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
-    #   env: PROJECT_DIR=examples/wdc TOOLCHAIN=sanitize-thread
-
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=default
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=libcxx
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/32
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/wdc TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/WDC TOOLCHAIN=osx-10-11
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/35
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=ios-nocodesign-9-3
+    # https://github.com/CloudPolis/webdav-client-cpp/issues/34
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # https://github.com/ruslo/polly/issues/32#issuecomment-122081810
+    # - os: osx
+    #   env: PROJECT_DIR=examples/WDC TOOLCHAIN=analyze
     # }
 
 install:
