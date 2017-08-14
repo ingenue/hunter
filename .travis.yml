@@ -23,8 +23,8 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=default
 
-    - os: linux
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=gcc
 
