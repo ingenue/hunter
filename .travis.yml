@@ -34,6 +34,8 @@ matrix:
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=linux-mingw-w64-cxx98
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846142
@@ -107,6 +109,8 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=linux-mingw-w64-cxx98
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846142
@@ -181,6 +185,8 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver-suitesparse-dynLAPACK TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/ceres-solver-suitesparse-dynLAPACK TOOLCHAIN=linux-mingw-w64-cxx98
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846142
