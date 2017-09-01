@@ -17,6 +17,7 @@ addons:
   apt:
     packages:
       - gfortran
+      - mingw-w64
 
 env:
   global:
