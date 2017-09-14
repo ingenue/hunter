@@ -36,17 +36,17 @@ matrix:
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME: https://github.com/ruslo/hunter/issues/1037
+    # - os: linux
+    #   env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=sanitize-leak
     - os: linux
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=sanitize-thread
-
-    # FIXME: https://github.com/ruslo/hunter/issues/1037
-    # - os: linux
-    #   env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=analyze
-
     # }
 
     # OSX {
