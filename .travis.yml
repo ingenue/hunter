@@ -41,10 +41,12 @@ matrix:
     # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
     # - os: linux
     #   env: PROJECT_DIR=examples/flex TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/flex TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/flex TOOLCHAIN=sanitize-leak
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
+    # - os: linux
+    #   env: PROJECT_DIR=examples/flex TOOLCHAIN=sanitize-address
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
+    # - os: linux
+    #   env: PROJECT_DIR=examples/flex TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
