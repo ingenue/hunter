@@ -58,11 +58,7 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/bison TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/bison TOOLCHAIN=osx-10-11
 
