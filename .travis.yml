@@ -54,8 +54,11 @@ matrix:
       env: PROJECT_DIR=examples/hunter_box_1 TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/hunter_box_1 TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/hunter_box_1 TOOLCHAIN=ios-nocodesign-9-3
+
+    # FIXME
+    # - os: osx
+    #   env: PROJECT_DIR=examples/hunter_box_1 TOOLCHAIN=ios-nocodesign-9-3
+
     # }
 
 install:
