@@ -32,13 +32,19 @@ matrix:
       env: PROJECT_DIR=examples/bison TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/bison TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276973941
+    # - os: linux
+    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276973941
+    # - os: linux
+    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
     # FIXME: https://travis-ci.org/ingenue/hunter/builds/275161801
     # - os: linux
     #   env: PROJECT_DIR=examples/bison TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/bison TOOLCHAIN=sanitize-address
     - os: linux
@@ -59,15 +65,23 @@ matrix:
       env: PROJECT_DIR=examples/bison TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/bison TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276973941
+    # - os: osx
+    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=ios-nocodesign-9-3
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276973941
+    # - os: osx
+    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276973941
+    # - os: osx
+    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
     # FIXME: https://travis-ci.org/ingenue/hunter/builds/275161801
     # - os: osx
     #   env: PROJECT_DIR=examples/bison TOOLCHAIN=analyze
+
     # }
 
 install:
