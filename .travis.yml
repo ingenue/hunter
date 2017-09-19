@@ -66,10 +66,6 @@ matrix:
     # - os: osx
     #   env: PROJECT_DIR=examples/bison TOOLCHAIN=ios-nocodesign-9-3
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275161801
-    # - os: osx
-    #   env: PROJECT_DIR=examples/bison TOOLCHAIN=analyze
-
     # }
 
 install:
