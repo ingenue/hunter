@@ -33,6 +33,9 @@ environment:
     #- TOOLCHAIN: "vs-14-2015"
     #  PROJECT_DIR: examples\SuiteSparse
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\SuiteSparse
+
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\SuiteSparse
 
