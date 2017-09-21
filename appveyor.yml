@@ -35,6 +35,7 @@ environment:
 
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\SuiteSparse
+      HUNTER_BINARY_DIR: C:\_hunter_bin
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\SuiteSparse
