@@ -62,8 +62,8 @@ matrix:
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=osx-10-11
     # FIXME: find_package(OpenGL) found, but error at #include <OpenGL/OpenGL.h>
     # * https://travis-ci.org/NeroBurner/hunter/jobs/283587683
-    - os: osx
-      env: PROJECT_DIR=examples/glbinding TOOLCHAIN=ios-nocodesign-9-3
+    #- os: osx
+    #  env: PROJECT_DIR=examples/glbinding TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
