@@ -34,10 +34,14 @@ matrix:
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/glbinding TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/glbinding TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # FIXME: can't find OpenGL
+    # * https://travis-ci.org/NeroBurner/hunter/jobs/283587676
+    #- os: linux
+    #  env: PROJECT_DIR=examples/glbinding TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: can't find OpenGL
+    # * https://travis-ci.org/NeroBurner/hunter/jobs/283587677
+    #- os: linux
+    #  env: PROJECT_DIR=examples/glbinding TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     - os: linux
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=analyze
     - os: linux
@@ -56,6 +60,8 @@ matrix:
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=osx-10-11
+    # FIXME: find_package(OpenGL) found, but error at #include <OpenGL/OpenGL.h>
+    # * https://travis-ci.org/NeroBurner/hunter/jobs/283587683
     - os: osx
       env: PROJECT_DIR=examples/glbinding TOOLCHAIN=ios-nocodesign-9-3
     # }
