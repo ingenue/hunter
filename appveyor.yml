@@ -34,6 +34,7 @@ environment:
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\globjects
+      HUNTER_BINARY_DIR: C:\_hunter
 
     # disabled in dependency glbinding
     #- TOOLCHAIN: "msys"
