@@ -61,8 +61,10 @@ matrix:
       env: PROJECT_DIR=examples/libdill TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/libdill TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/libdill TOOLCHAIN=ios-nocodesign-9-3
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/281003928
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libdill TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
