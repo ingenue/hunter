@@ -1,5 +1,8 @@
 # Windows (https://github.com/travis-ci-tester/toolchain-table)
 
+# All tests failed by timeout:
+# * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.162
+
 environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
@@ -7,31 +10,46 @@ environment:
       secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
   matrix:
+    # Protobuf {
+
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\Protobuf
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\foo
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf
+
+    # }
+
+    # Protobuf-legacy {
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-legacy
+    # }
+
+    # Protobuf-optimized {
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-optimized
+    # }
 
 install:
   # Python 3

@@ -104,6 +104,18 @@ def run():
           )
       )
 
+  if (
+      os.getenv('TRAVIS') and
+      toolchain.startswith('ios-nocodesign')
+  ):
+    verbose = False
+
+  if (
+      os.getenv('TRAVIS') and
+      (toolchain == 'xcode-nocxx')
+  ):
+    verbose = False
+
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
