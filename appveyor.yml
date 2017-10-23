@@ -67,7 +67,7 @@ install:
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
 build_script:
-  - cmd: python .\jenkins.py | grep -E '^\-\-'
+  - cmd: python .\jenkins.py | findstr /B /L '--'
 
 # http://www.appveyor.com/docs/branches#white-and-blacklisting
 # Exclude branch 'pkg.template'. Nothing to build there.
