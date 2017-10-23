@@ -29,7 +29,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=clang-libstdcxx VERBOSE=0
     - os: linux
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=gcc
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/291260625
@@ -42,9 +42,9 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-address VERBOSE=0
     - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-leak VERBOSE=0
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
@@ -56,7 +56,7 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=osx-10-11 VERBOSE=0
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/291260625
     # - os: osx
     #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=ios-nocodesign-9-3
@@ -96,8 +96,7 @@ install:
   - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
 
 script:
-  # Need to suppress verbose logging or Travis fails at 4 MB
-  - python3 ./jenkins.py | grep -E '^\-\-'
+  - python3 ./jenkins.py
 
 # https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
 # Exclude branch 'pkg.template'. Nothing to build there.
