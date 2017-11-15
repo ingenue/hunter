@@ -36,8 +36,11 @@ matrix:
       env: PROJECT_DIR=examples/libthrift TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/libthrift TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/libthrift TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/jobs/302509443
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libthrift TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/libthrift TOOLCHAIN=sanitize-address
     - os: linux
