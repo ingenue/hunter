@@ -11,29 +11,29 @@ environment:
 
     # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.243
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\libthrift
+    #   PROJECT_DIR: examples\thrift
 
     # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.243
     # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\libthrift
+    #   PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\libthrift
+      PROJECT_DIR: examples\thrift
 
 install:
   # Python 3
