@@ -51,11 +51,11 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=libcxx VERBOSE=0
     - os: osx
-      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=osx-10-11 VERBOSE=0
     - os: osx
-      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=ios-nocodesign-9-3 VERBOSE=0
     # }
 
 install:
