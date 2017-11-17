@@ -45,6 +45,10 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-pic
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
