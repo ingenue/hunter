@@ -104,13 +104,6 @@ def run():
           )
       )
 
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/PocoCpp') and
-      toolchain.startswith('ios-nocodesign')
-  ):
-    verbose = False
-
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
