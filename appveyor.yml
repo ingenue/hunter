@@ -31,10 +31,8 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\OpenSSL
 
-    # FIXME:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.13/job/7okwadjb1wjeuii3
-    # - TOOLCHAIN: "mingw"
-    #      PROJECT_DIR: examples\OpenSSL
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\OpenSSL
 
     # - TOOLCHAIN: "msys"
     #      PROJECT_DIR: examples\OpenSSL
