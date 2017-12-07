@@ -32,12 +32,18 @@ matrix:
       env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/312899558
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/312899558
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=sanitize-address
     - os: linux
