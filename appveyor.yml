@@ -18,8 +18,9 @@ environment:
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\SDL_ttf
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\SDL_ttf
+    # * https://ci.appveyor.com/project/db-tech/hunter/build/1.0.4
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\SDL_ttf
 
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\SDL_ttf
@@ -27,11 +28,13 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\SDL_ttf
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\SDL_ttf
+    # * https://ci.appveyor.com/project/db-tech/hunter/build/1.0.4
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\SDL_ttf
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\SDL_ttf
+    # * https://ci.appveyor.com/project/db-tech/hunter/build/1.0.4
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\SDL_ttf
 
 install:
   # Python 3

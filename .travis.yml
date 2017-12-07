@@ -32,12 +32,15 @@ matrix:
       env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=analyze
+    # * https://travis-ci.org/db-tech/hunter/builds/312585515
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # * https://travis-ci.org/db-tech/hunter/builds/312585515
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # * https://travis-ci.org/db-tech/hunter/builds/312585515
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,8 +57,9 @@ matrix:
       env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=ios-nocodesign-10-3
+    # * https://travis-ci.org/db-tech/hunter/builds/312585515
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SDL_ttf TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
