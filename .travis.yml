@@ -26,8 +26,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=default
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/313427971
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/lmdbxx TOOLCHAIN=clang-libstdcxx
     - os: linux
