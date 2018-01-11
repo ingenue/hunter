@@ -14,23 +14,23 @@ environment:
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "vs-12-2013-win64"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "vs-12-2013-xp"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "vs-12-2013"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\libxml2
 
-    # - TOOLCHAIN: "vs-14-2015"
-    #   PROJECT_DIR: examples\libxml2
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\libxml2
 
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\libxml2
