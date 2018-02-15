@@ -31,41 +31,53 @@ env:
 matrix:
   include:
     # Linux {
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=default
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=default
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=clang-libstdcxx
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=clang-libstdcxx
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=gcc-5
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=gcc-5
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=analyze
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=analyze
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-address
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=sanitize-address
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-leak
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=sanitize-leak
+# CMAKE_CXX_STANDARD < 14
 #     - os: linux
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-thread
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=sanitize-thread
       - os: linux
-        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=gcc-5-cxx14-c11 # cxx14
+        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=gcc-5-cxx14-c11 # cxx14
       - os: linux
-        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r16b-api-24-armeabi-v7a-neon-clang-libcxx14 # cxx14
+        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=android-ndk-r16b-api-24-armeabi-v7a-neon-clang-libcxx14 # cxx14
     # }
 
     # OSX {
+# CMAKE_CXX_STANDARD < 14
 #     - os: osx
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=libcxx
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=libcxx
+# CMAKE_CXX_STANDARD < 14
 #     - os: osx
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=osx-10-12
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=osx-10-12
+# CMAKE_CXX_STANDARD < 14
 #     - os: osx
-#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign-10-3
+#       env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=ios-nocodesign-10-3
       - os: osx
-        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=libcxx14 # c++14
+        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=libcxx14 # c++14
       - os: osx
-        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign # c++14
+        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=ios-nocodesign # c++14
     # }
 
 install:
