@@ -77,7 +77,7 @@ matrix:
       - os: osx
         env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=libcxx14 # c++14
       - os: osx
-        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=ios-nocodesign # c++14
+        env: PROJECT_DIR=examples/frugally-deep TOOLCHAIN=ios-nocodesign-10-3-cxx14  # c++14
     # }
 
 install:
