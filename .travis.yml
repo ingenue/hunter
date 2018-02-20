@@ -1,7 +1,7 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
 # Workaround for https://github.com/travis-ci/travis-ci/issues/8363
-language:
+language: 
   - minimal
 
 # Container-based infrastructure (Linux)
@@ -20,6 +20,8 @@ addons:
 
       - g++-5
       - gcc-5
+      - g++-7
+      - gcc-7
 
 dist:
   - trusty
@@ -32,37 +34,51 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=gcc-5-cxx14-c11
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=gcc-7-cxx17
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=gcc-5
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=clang-5-cxx14
+# https://travis-ci.org/ckaminski/hunter/builds/343647691
+# GCC version on travis-ci is too older to support C++14.
+#    - os: linux
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=gcc-cxx14-c11
+# https://travis-ci.org/ckaminski/hunter/builds/341150545
+# No C++14 toolchains
+#    - os: linux
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=clang-libstdcxx
+#    - os: linux
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=gcc-5
+#    - os: linux
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#    - os: linux
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=sanitize-leak
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=ios-nocodesign-10-3
+# https://travis-ci.org/ckaminski/hunter/builds/341150545
+# No C++14 toolchains
+#    - os: osx
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=libcxx
+#    - os: osx
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=osx-10-12
+#    - os: osx
+#      env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
   # Info about OS
   - uname -a
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - whereis g++-5.0
 
   # Disable autoupdate
   # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
@@ -75,12 +91,16 @@ install:
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+  # fix broken clang link on Travis-CI
+  - if [[ "`uname`" == "Linux" ]]; then  mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
+  - if [[ "`uname`" == "Darwin" ]]; then mkdir clang-bin; ln -s /usr/bin/clang++ clang-bin/clang++-5.0; fi
+
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
   - unzip master.zip
   - POLLY_ROOT="`pwd`/polly-master"
-  - export PATH="${POLLY_ROOT}/bin:${PATH}"
+  - export PATH="${POLLY_ROOT}/bin:`pwd`/clang-bin:${PATH}"
 
   # Install dependencies (CMake, Android NDK)
   - install-ci-dependencies.py
