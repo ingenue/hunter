@@ -32,32 +32,32 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=gcc-5
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=gcc-5
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=sanitize-leak
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=osx-10-12
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=ios-nocodesign-10-3
+      env: PROJECT_DIR=examples/EnumGroup TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
