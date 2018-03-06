@@ -11,9 +11,11 @@ environment:
 
     #- TOOLCHAIN: "ninja-vs-12-2013-win64"
     #  PROJECT_DIR: examples\EnumGroup
+    # https://ci.appveyor.com/project/Person-93/hunter/build/1.0.2/job/metmvibogyru2w4c
 
     #- TOOLCHAIN: "nmake-vs-12-2013-win64"
     #  PROJECT_DIR: examples\EnumGroup
+    # https://ci.appveyor.com/project/Person-93/hunter/build/1.0.2/job/rb3n12kb437lfs49
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\EnumGroup
@@ -32,6 +34,7 @@ environment:
 
     #- TOOLCHAIN: "msys"
     #  PROJECT_DIR: examples\EnumGroup
+    # https://ci.appveyor.com/project/Person-93/hunter/build/1.0.2/job/8l93eh05m2ova2jw
 
 install:
   # Python 3
