@@ -34,6 +34,13 @@ environment:
 #    - TOOLCHAIN: "msys"
 #      PROJECT_DIR: examples\chaiscript
 
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "mingw-cxx14"
+      PROJECT_DIR: examples\chaiscript
+
+    - TOOLCHAIN: "msys-cxx14"
+      PROJECT_DIR: examples\chaiscript
+
 # https://ci.appveyor.com/project/ckaminski/hunter/build/job/ek2lbydvxyml7s6e
 # Did not test if ChaiScript is C++17 compatible - ignoring build
 #    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
@@ -68,10 +75,10 @@ install:
 
   # Use MinGW from Qt tools because version is higher
   # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
-  - cmd: set MSYS_PATH=C:\msys64\usr\bin
+  - cmd: set MSYS_PATH=C:\msys64\mingw64\bin
 
 build_script:
   - cmd: python .\jenkins.py
