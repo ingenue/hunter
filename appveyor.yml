@@ -8,30 +8,44 @@ environment:
 
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
+# https://ci.appveyor.com/project/ckaminski/hunter/build/1.0.17
+# No C++14 support
+#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+#      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+#      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "vs-12-2013-win64"
+#      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "vs-12-2013-xp"
+#      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "vs-12-2013"
+#      PROJECT_DIR: examples\chaiscript
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\chaiscript
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\foo
+#    - TOOLCHAIN: "msys"
+#      PROJECT_DIR: examples\chaiscript
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "mingw-cxx14"
+      PROJECT_DIR: examples\chaiscript
+
+    - TOOLCHAIN: "msys-cxx14"
+      PROJECT_DIR: examples\chaiscript
+
+# https://ci.appveyor.com/project/ckaminski/hunter/build/job/ek2lbydvxyml7s6e
+# Did not test if ChaiScript is C++17 compatible - ignoring build
+#    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+#      TOOLCHAIN: "vs-15-2017-cxx17"
+#      PROJECT_DIR: examples\chaiscript
 
 install:
   # Python 3
@@ -61,10 +75,10 @@ install:
 
   # Use MinGW from Qt tools because version is higher
   # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
-  - cmd: set MSYS_PATH=C:\msys64\usr\bin
+  - cmd: set MSYS_PATH=C:\msys64\mingw64\bin
 
 build_script:
   - cmd: python .\jenkins.py
