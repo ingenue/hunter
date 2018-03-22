@@ -8,6 +8,7 @@ environment:
 
   matrix:
 
+    # https://ci.appveyor.com/project/ckaminski/hunter/build/1.0.46/job/xgc305e539djnagy - This version of Chaiscript (6.0) is incompatible with C++17
     #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #  TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
     #  PROJECT_DIR: examples\chaiscript
@@ -24,13 +25,14 @@ environment:
     #  TOOLCHAIN: "vs-14-2015-sdk-8-1"
     #  PROJECT_DIR: examples\chaiscript
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "mingw-cxx14"
-      PROJECT_DIR: examples\chaiscript
+    # https://ci.appveyor.com/project/ckaminski/hunter/build/1.0.46/job/xgc305e539djnagy  - Issue with Threads::Threads on Windows.
+    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #  TOOLCHAIN: "mingw-cxx14"
+    #  PROJECT_DIR: examples\chaiscript
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "msys-cxx14"
-      PROJECT_DIR: examples\chaiscript
+    #- APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #  TOOLCHAIN: "msys-cxx14"
+    #  PROJECT_DIR: examples\chaiscript
 
 install:
   # Python 3

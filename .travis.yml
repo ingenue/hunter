@@ -34,6 +34,7 @@ matrix:
   include:
     # Linux {
 
+    # This version of Chaiscript (6.0) is incompatible with C++17
     #- os: linux
     #  env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=clang-cxx17
 
@@ -59,6 +60,7 @@ matrix:
 
     # OSX {
 
+    # https://travis-ci.org/ckaminski/hunter/builds/356141340 - xcode thread linking issue - possibly with Chaiscript build itself.
     #- os: osx
     #  osx_image: xcode9.2
     #  env: PROJECT_DIR=examples/chaiscript TOOLCHAIN=osx-10-13-make-cxx14
