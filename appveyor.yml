@@ -8,10 +8,6 @@ environment:
 
   matrix:
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\libevhtp
-
     # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.436
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
@@ -41,6 +37,14 @@ environment:
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     #   TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\libevhtp
+
+    # Extra {
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\clBLAS
+
+    # }
 
 install:
   # Python 3
