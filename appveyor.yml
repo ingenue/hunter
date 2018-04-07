@@ -35,6 +35,7 @@ environment:
     #   PROJECT_DIR: examples\acf
 
     - TOOLCHAIN: "vs-14-2015"
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       PROJECT_DIR: examples\acf
 
     # OpenCV dependency:
