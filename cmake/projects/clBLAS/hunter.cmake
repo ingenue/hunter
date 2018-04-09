@@ -23,6 +23,7 @@ hunter_add_version(
 hunter_cmake_args(
   clBLAS
   CMAKE_ARGS
+      BUILD_TEST:BOOL=OFF
       BUILD_TEST=OFF
       BUILD_CLIENT=OFF
       BUILD_PERFORMANCE=OFF
