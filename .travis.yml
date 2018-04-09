@@ -70,8 +70,12 @@ matrix:
       env: PROJECT_DIR=examples/acf TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/acf TOOLCHAIN=osx-10-12
+    # FIXME: Unknown error in testing (can't get meaningful log)
+    #- os: osx
+    #  env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-10-3 VERBOSE=0
     - os: osx
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-10-3
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
     # }
 
 install:
