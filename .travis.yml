@@ -83,11 +83,11 @@ matrix:
 
     - os: osx
       osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
+      env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
 
     - os: osx
       osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
+      env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
 
     # }
 
