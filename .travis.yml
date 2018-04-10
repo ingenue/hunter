@@ -37,18 +37,16 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/acf TOOLCHAIN=clang-cxx17
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/364051090
+    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083573
     # - os: linux
-    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=gcc-7-cxx17
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/299720393
+    # FIXME: https://travis-ci.org/headupinclouds/hunter/jobs/364429084#L6809
     # - os: linux
-    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14 VERBOSE=0
 
-    # libtiff dependency:
-    # * https://travis-ci.org/ingenue/hunter/jobs/299720395
+    # FIXME (TIFF broken)
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592968
     # - os: linux
     #   env: PROJECT_DIR=examples/acf TOOLCHAIN=analyze-cxx17
 
@@ -59,7 +57,7 @@ matrix:
       env: PROJECT_DIR=examples/acf TOOLCHAIN=sanitize-leak-cxx17
 
     - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=sanitize-thread-cxx17
+      env: PROJECT_DIR=examples/acf TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
 
     # }
 
@@ -71,11 +69,13 @@ matrix:
 
     - os: osx
       osx_image: xcode9.2
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=osx-10-13-cxx14
+      env: PROJECT_DIR=examples/acf TOOLCHAIN=osx-10-13-cxx14 VERBOSE=0
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+    # Upload from local machine
+    # FIXME: modules/core/src/parallel_impl.cpp:396:21: error: implicitly declaring library function '_mm_pause' with type 'void ()'
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=ios-nocodesign-11-2-dep-9-3 VERBOSE=0
 
     # }
 

@@ -8,20 +8,17 @@ environment:
 
   matrix:
 
-    # Boost dependency:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2708/job/f7shn3wdk2fre154
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2731/job/hc2kxpfas8tlxi3h
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\acf
 
-    # Boost dependency:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2708/job/3otwr55r5k035oe4
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2731/job/eyr4aoan2hl6yjau
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\acf
 
-    # OpenCV dependency:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3574/job/i5uiscaulx733ne7
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3441/job/unlf97gahmsmwywo
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\acf
@@ -30,14 +27,18 @@ environment:
       TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\acf
 
-    # OpenCV dependency:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2708/job/7du6v4yss774834o
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.279/job/p27q37khi5t7vopc
+    # Error message:
+    #   Source\modules\core\src\parallel.cpp:544:1: error:
+    #   control reaches end of non-void function
+    # -----
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     #   TOOLCHAIN: "mingw-cxx17"
     #   PROJECT_DIR: examples\acf
 
-    # libtiff dependency:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2708/job/xndasaxts9untxjb
+    # FIXME:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.669/job/h0rdtt5n9q0wxqix
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     #   TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\acf
