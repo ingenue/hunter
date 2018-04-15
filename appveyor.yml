@@ -34,6 +34,8 @@ environment:
     #   PROJECT_DIR: examples\catkin
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    - TOOLCHAIN: "dummy"
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
