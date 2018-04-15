@@ -22,6 +22,7 @@ addons:
     packages:
       - python3-pip
       - g++-7
+      - python-pip
       - python-empy
 
 dist:
@@ -112,8 +113,8 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install python packages required to build ROS components
-  - if [[ "`uname`" == "Darwin" ]]; then pip3 install catkin_pkg; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user catkin_pkg; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip install catkin_pkg; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip install --user catkin_pkg; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
