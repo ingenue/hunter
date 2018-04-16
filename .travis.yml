@@ -113,7 +113,7 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install python packages required to build ROS components
-  - if [[ "`uname`" == "Darwin" ]]; then pip install --user catkin_pkg; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip install --user empy catkin_pkg; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip install --user catkin_pkg; fi
 
   # Install latest Polly toolchains and scripts
