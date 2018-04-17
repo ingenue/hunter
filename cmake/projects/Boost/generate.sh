@@ -8,8 +8,10 @@ BOOST_LIBS="
     chrono
     context
     coroutine
+    contract
     date_time
     exception
+    fiber
     filesystem
     graph
     graph_parallel
