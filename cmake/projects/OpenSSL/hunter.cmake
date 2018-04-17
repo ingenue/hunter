@@ -80,6 +80,17 @@ hunter_add_version(
     PACKAGE_NAME
     OpenSSL
     VERSION
+    "1.1.0h"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0h.tar.gz"
+    SHA1
+    2168c88516556332ebaf7c31791132025a093c2b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
     "1.0.2n"
     URL
     "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2n.tar.gz"
@@ -195,6 +206,17 @@ hunter_add_version(
     "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2m.tar.gz"
     SHA1
     f0af7e246a677fd52945e5438eb11ce0de391a4c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2o"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2o.tar.gz"
+    SHA1
+    ec7ad3650206f1045d48f2fe9ed4ad93a1228ec5
 )
 
 hunter_add_version(
@@ -337,8 +359,12 @@ elseif(WIN32)
   else()
     hunter_pick_scheme(DEFAULT url_sha1_openssl_windows_1_1_plus)
   endif()
-elseif(IOS)
-  hunter_pick_scheme(DEFAULT url_sha1_openssl_ios)
+elseif(APPLE)
+  if(IOS)
+    hunter_pick_scheme(DEFAULT url_sha1_openssl_ios)
+  else()
+    hunter_pick_scheme(DEFAULT url_sha1_openssl_macos)
+  endif()
 else()
   hunter_pick_scheme(DEFAULT url_sha1_openssl)
 endif()
@@ -351,4 +377,4 @@ if(MINGW)
 endif()
 
 hunter_cacheable(OpenSSL)
-hunter_download(PACKAGE_NAME OpenSSL PACKAGE_INTERNAL_DEPS_ID "19")
+hunter_download(PACKAGE_NAME OpenSSL PACKAGE_INTERNAL_DEPS_ID "20")
