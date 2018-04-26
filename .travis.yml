@@ -62,8 +62,10 @@ matrix:
     # OSX {
     - os: osx
       env: PROJECT_DIR=examples/thrift TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/thrift TOOLCHAIN=osx-10-11
+
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/371372196
+    # - os: osx
+    #   env: PROJECT_DIR=examples/thrift TOOLCHAIN=osx-10-11
 
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
     # - os: osx
