@@ -4,45 +4,45 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
+      secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
 
   matrix:
-    # Note: 'default' toolchain is the same as 'vs-14-2015'
+
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
 
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\thrift
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "vs-12-2013-win64"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "vs-12-2013-xp"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "vs-12-2013"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "vs-14-2015"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "mingw"
-    #   PROJECT_DIR: examples\thrift
-
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.39
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\thrift
+    # }
 
 install:
   # Python 3
@@ -70,12 +70,13 @@ install:
   # * http://stackoverflow.com/a/3870338/2288008
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 
-  # Use MinGW from Qt tools because version is higher
-  # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
+
+  # Visual Studio 15 2017: Mimic behavior of older versions
+  - cmd: set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools
 
 build_script:
   - cmd: python .\jenkins.py

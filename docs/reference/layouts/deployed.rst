@@ -1,8 +1,13 @@
 .. Copyright (c) 2016-2017, Ruslan Baratov
 .. All rights reserved.
 
+
+.. _layout deployed:
+
 Deployed
 --------
+
+.. _layout deployed common:
 
 Common
 ======
@@ -50,6 +55,8 @@ For example we have file ``toolchain.info`` and we want to save it in
 * Save empty stamp file ``<Toolchain-ID>/DONE``
 
 * Unlock ``<Toolchain-ID>/cmake.lock``
+
+.. _layout deployed base:
 
 Base
 ====
@@ -116,6 +123,8 @@ for development.
   ├── Cellar/                                  # see below
   └── Cache/                                   # see below
 
+.. _layout deployed download:
+
 Download
 ========
 
@@ -147,6 +156,8 @@ Hunter code).
                ├── Build/
                └── Unpacked/             # Unpacked Hunter archive (HUNTER_SELF)
 
+
+.. _layout deployed cache:
 
 Cache
 =====
@@ -202,6 +213,9 @@ arguments, dependencies, etc.).
                                 ├─ CACHE.DONE     # stamp: deps.info and cache.sha1 created and ready to be used
                                 └─ from.server    # info downloaded from server, no need to upload this entry
 
+
+.. _layout deployed cellar:
+
 Cellar
 ======
 
@@ -223,3 +237,41 @@ Cellar directory consists of unpacked raw cache archives and source archives of
         ├─ link-all.sh                            # link script
         ├─ licenses/
         └─ raw/                                   # directory with unpacked files
+
+.. _layout deployed private data:
+
+PrivateData
+===========
+
+Directory with
+:doc:`downloaded private data </user-guides/cmake-user/private-data>`.
+
+If ``FILE`` specified (download only):
+
+.. code-block:: none
+  :emphasize-lines: 2,4,6,8
+
+  PrivateData/
+  └─ <sha1>/                 # SHA1 of downloaded file
+     └─ <id>/                # first 7 digits of SHA1
+        ├─ cmake.lock
+        ├─ SHA1
+        ├─ DONE
+        ├─ unpack.DONE       # stamp: download operation finished
+        ├─ param.file        # value specified in `FILE`
+        └─ raw/<filename>    # downloaded file
+
+If ``FILE`` not specified (download archive and unpack):
+
+.. code-block:: none
+  :emphasize-lines: 2,4,6,8
+
+  PrivateData/
+  └─ <sha1>/                 # SHA1 of downloaded file
+     └─ <id>/                # first 7 digits of SHA1
+        ├─ cmake.lock
+        ├─ SHA1
+        ├─ DONE
+        ├─ unpack.DONE       # stamp: download and unpack operation finished
+        ├─ archive.file      # downloaded archive
+        └─ raw/*             # unpacked directory
