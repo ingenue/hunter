@@ -47,10 +47,10 @@ hunter_test_string_not_empty("@HUNTER_Boost_VERSION@")
 # get list of boost components for given version
 hunter_get_boost_libs(VERSION "@HUNTER_Boost_VERSION@" LIBS boost_libs)
 
-if("@HUNTER_Boost_VERSION@" VERSION_LESS 1.66)
-  set(fatlib_script "@HUNTER_PACKAGE_SCRIPT_DIR@/create-boost-ios-fatlib.sh")
-else()
+if("@HUNTER_Boost_VERSION@" VERSION_EQUAL 1.66.0)
   set(fatlib_script "@HUNTER_PACKAGE_SCRIPT_DIR@/create-boost-1-66-ios-fatlib.sh")
+else()
+  set(fatlib_script "@HUNTER_PACKAGE_SCRIPT_DIR@/create-boost-ios-fatlib.sh")
 endif()
 
 set(libfound NO)
@@ -133,6 +133,10 @@ set(
     --user-config="${boost_user_jam}"
 )
 
+set(BOOST_VERSION "@HUNTER_Boost_VERSION@")
+
+# Use:
+# * BOOST_VERSION
 hunter_boost_component_b2_args(
   "@HUNTER_PACKAGE_COMPONENT@"
   "@HUNTER_Boost_CMAKE_ARGS@"
@@ -150,7 +154,11 @@ endif()
 
 string(COMPARE NOTEQUAL "@HUNTER_JOBS_OPTION@" "" have_jobs)
 if(have_jobs)
-  list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  if("@HUNTER_JOBS_OPTION@" GREATER "256")
+    list(APPEND build_opts "-j" 256)
+  else()
+    list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  endif()
 endif()
 
 set(

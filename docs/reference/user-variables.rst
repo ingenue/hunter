@@ -42,6 +42,9 @@ CMake
         "Hunter cache servers"
     )
 
+    # Good
+    set(HUNTER_JOBS_NUMBER 6 CACHE STRING "Hunter jobs number")
+
     # All user options before HunterGate
     HunterGate(URL "..." SHA1 "...")
 
@@ -129,7 +132,10 @@ HUNTER_JOBS_NUMBER
 * Number of parallel builds that will be used in such native tools like ``make -jN`` or ``xcodebuild -jobs N``
 * For Visual Studio >= 12 2013 flag ``/maxcpucount:N`` will be added to ``MSBuild``
 * Set variable to ``0`` to disable adding any flags: ``HUNTER_JOBS_NUMBER=0``
-* Default: `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.2/command/cmake_host_system_information.html>`__
+* Defaults to maximum of two:
+
+  * `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.11/command/cmake_host_system_information.html>`__
+  * `NUMBER_OF_PHYSICAL_CORES <http://www.cmake.org/cmake/help/v3.11/command/cmake_host_system_information.html>`__
 
 .. _hunter run install:
 
