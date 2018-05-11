@@ -4,46 +4,33 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
+      secure: qQvNsrf+SWY9hg8/7HmsJzE9m4S0phUeVaWk+wyrQe3aNsWLazFXzCsBsu4EBBvc
 
   matrix:
-    # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\aglet
+    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\aglet
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\aglet
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\aglet
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\aglet
-
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\aglet
-
-    # GLEW is missing:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/7mx432diwehh6snf
-    # - TOOLCHAIN: "mingw"
-    #   PROJECT_DIR: examples\aglet
-
-    # OpenGL not found:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/1co843n92f2gwqec
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\aglet
-
-    # Extra toolchains for Drishti {
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\aglet
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
-      PROJECT_DIR: examples\aglet
-    # }
+    - TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    - TOOLCHAIN: "msys-cxx17"
+      PROJECT_DIR: examples\foo
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
@@ -71,12 +58,13 @@ install:
   # * http://stackoverflow.com/a/3870338/2288008
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 
-  # Use MinGW from Qt tools because version is higher
-  # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
+
+  # Visual Studio 15 2017: Mimic behavior of older versions
+  - cmd: set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools
 
 build_script:
   - cmd: python .\jenkins.py

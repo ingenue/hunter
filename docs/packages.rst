@@ -39,6 +39,9 @@ List of packages and usage instructions for each package.
    /packages/math
    /packages/media
    /packages/networking
+   /packages/random
+   /packages/regex
+   /packages/robotics
    /packages/scripting
    /packages/serialize
    /packages/os
