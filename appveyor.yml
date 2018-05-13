@@ -8,30 +8,42 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # NOTE: All c++17 toolchain tests suffer from byte amgibuity (due to new std::byte type) in Windows headers
+    # https://developercommunity.visualstudio.com/content/problem/93889/error-c2872-byte-ambiguous-symbol.html
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: https://ci.appveyor.com/project/headupinclouds/hunter-8w0rs/build/job/uvkytobffjytqpey
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\ogles_gpgpu
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: https://ci.appveyor.com/project/headupinclouds/hunter-8w0rs/build/job/7f29jdbh4u62ggck
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\ogles_gpgpu
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # FIXME: https://ci.appveyor.com/project/headupinclouds/hunter-8w0rs/build/job/q7ry4xwy55huydbq
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\ogles_gpgpu
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\ogles_gpgpu
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/headupinclouds/hunter-8w0rs/build/job/rrsegxvudl39q7pp
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\ogles_gpgpu
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/headupinclouds/hunter-8w0rs/build/job/nb97658dbed4q43j
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\ogles_gpgpu
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    - TOOLCHAIN: "vs-15-2017"
+      PROJECT_DIR: examples\ogles_gpgpu
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%

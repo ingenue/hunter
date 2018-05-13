@@ -36,37 +36,38 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/foo
+    # FIXME: https://travis-ci.org/headupinclouds/hunter/jobs/377920565
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     # }
 
@@ -76,19 +77,19 @@ matrix:
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: osx
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     - os: osx
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ogles_gpgpu
 
     # }
 
