@@ -25,11 +25,13 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: build fails on "g++.exe: error: /W3: No such file or directory"
+    # https://ci.appveyor.com/project/szatan/hunter/build/1.0.6
     # - TOOLCHAIN: "mingw-cxx17"
     #   PROJECT_DIR: examples\tacopie
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: build fails on "g++.exe: error: /W3: No such file or directory"
+    # https://ci.appveyor.com/project/szatan/hunter/build/1.0.6
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\tacopie
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
