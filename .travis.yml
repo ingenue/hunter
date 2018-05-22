@@ -72,10 +72,6 @@ matrix:
         TOOLCHAIN=sanitize-thread-cxx17
         PROJECT_DIR=examples/tacopie
 
-    # }
-
-    # OSX {
-
     - os: osx
       osx_image: xcode9.3
       env: >
