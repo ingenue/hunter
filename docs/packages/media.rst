@@ -1,7 +1,17 @@
+.. spelling::
+
+    OpenAL
+    gif
+    WebP
+
 Media
 -----
 
- * `Jpeg <https://github.com/ruslo/hunter/wiki/pkg.jpeg>`_ -  library for JPEG image compression.
- * `libyuv <https://github.com/ruslo/hunter/wiki/pkg.libyuv>`_ - YUV scaling and conversion functionality.
- * `PNG <https://github.com/ruslo/hunter/wiki/pkg.png>`_ - library for use in applications that read, create, and manipulate PNG (Portable Network Graphics>`_ raster image files.
- * `TIFF <https://github.com/ruslo/hunter/wiki/pkg.tiff>`_
+ - :ref:`pkg.Jpeg` -  library for JPEG image compression.
+ - :ref:`pkg.OpenAL` - software implementation of the OpenAL 3D audio API.
+ - :ref:`pkg.PNG` - library for use in applications that read, create, and manipulate PNG (Portable Network Graphics) raster image files.
+ - :ref:`pkg.SDL_mixer` - A sample multi-channel audio mixer library for SDL.
+ - :ref:`pkg.TIFF`
+ - :ref:`pkg.giflib` - library for reading and writing gif images.
+ - :ref:`pkg.libyuv` - YUV scaling and conversion functionality.
+ - :ref:`pkg.WebP` - library to encode and decode images in WebP format.

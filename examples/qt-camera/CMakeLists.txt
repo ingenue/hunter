@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(TESTING_CONFIG_OPT FILEPATH "${CMAKE_CURRENT_LIST_DIR}/config.cmake")
+
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
@@ -13,6 +15,16 @@ hunter_add_package(Qt COMPONENTS qtmultimedia) # Qt5MultimediaWidgets
 
 find_package(Qt5MultimediaWidgets REQUIRED) # Qt5::MultimediaWidgets
 find_package(Qt5PrintSupport REQUIRED) # Qt5::PrintSupport
+
+if(APPLE)
+  # Travis error:
+  # * https://travis-ci.org/ingenue/hunter/jobs/354713684
+  # * You can't use this version of (null) with this version of macOS. You have macOS 10.12.6. Qt requires macOS 10.13.0 or later.
+  if(NOT TARGET Qt5::MultimediaWidgets)
+    message(FATAL_ERROR "No Qt5::Widgets target")
+  endif()
+  return()
+endif()
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -103,27 +115,27 @@ target_link_libraries(
   ${plugins}
 )
 
-set(fix_cyclic FALSE)
-if(APPLE)
-  set(fix_cyclic FALSE)
-elseif(CMAKE_COMPILER_IS_GNUCXX)
-  # MinGW included
-  set(fix_cyclic TRUE)
-elseif(NOT UNIX)
-  set(fix_cyclic FALSE)
-elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  # Linux Clang
-  set(fix_cyclic TRUE)
-endif()
+string(COMPARE EQUAL "${CMAKE_SYSTEM_NAME}" "Linux" is_linux)
 
-# Workaround for Linux's linker problems (*_MULTIPLICITY doesn't help, TODO) --
-if(fix_cyclic)
-  string(
-      REPLACE
-      "<LINK_LIBRARIES>"
-      " -Wl,--start-group <LINK_LIBRARIES> -Wl,--end-group "
-      CMAKE_CXX_LINK_EXECUTABLE
-      "${CMAKE_CXX_LINK_EXECUTABLE}"
+if(is_linux)
+  configure_file(
+      qt.conf
+      ${CMAKE_CURRENT_BINARY_DIR}/qt.conf
+      @ONLY
+  )
+
+  configure_file(
+      env.sh
+      ${CMAKE_CURRENT_BINARY_DIR}/env.sh
+      @ONLY
+  )
+
+  enable_testing()
+  add_test(NAME qt-camera COMMAND qt-camera)
+  set_tests_properties(
+      qt-camera
+      PROPERTIES
+      ENVIRONMENT
+      "QT_DEBUG_PLUGINS=1;LD_LIBRARY_PATH=${QT_ROOT}/lib;GST_PLUGIN_SCANNER=1;GST_PLUGIN_PATH=${QT_ROOT}/lib/gstreamer-1.0"
   )
 endif()
-# --

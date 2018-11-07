@@ -2,15 +2,21 @@
 
   Matlab
   Morphable
+  Adelson
 
-Computer Vision/Machine Learning/Image Processing
--------------------------------------------------
+Computer Vision
+---------------
 
- * `caffe <https://github.com/ruslo/hunter/wiki/pkg.caffe>`_ - fast open framework for deep learning.
- * `ccv <https://github.com/ruslo/hunter/wiki/pkg.ccv>`_ - A Modern Computer Vision Library
- * `cvmatio <https://github.com/ruslo/hunter/wiki/pkg.cvmatio>`_ - Matlab Mat file read and write C++ class with OpenCV bindings.
- * `dest <https://github.com/ruslo/hunter/wiki/pkg.dest>`_ - high performance 2D shape tracking leveraging machine learning methods.
- * `dlib <https://github.com/ruslo/hunter/wiki/pkg.dlib>`_ -  modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems.
- * `eos <https://github.com/ruslo/hunter/wiki/pkg.eos>`_ - A lightweight 3D Morphable Face Model fitting library in modern C++11/14
- * `OpenCV <https://github.com/ruslo/hunter/wiki/pkg.opencv>`_ - Open Source Computer Vision Library
- * `xgboost <https://github.com/ruslo/hunter/wiki/pkg.xgboost>`_ - Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM>`_ Library
+ - :ref:`pkg.acf` - Aggregated Channel Feature object detection in C++ and OpenGL ES 2.0.
+ - :ref:`pkg.ccv` - A Modern Computer Vision Library
+ - :ref:`pkg.cvmatio` - Matlab Mat file read and write C++ class with OpenCV bindings.
+ - :ref:`pkg.cvsteer` - A concise implementation of separable steerable filters
+   via Freeman and Adelson, including second derivative of Gaussian and its
+   Hilbert transform, implemented with the OpenCV C++ API
+ - :ref:`pkg.dest` - high performance 2D shape tracking leveraging machine learning methods.
+ - :ref:`pkg.dlib` -  modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++ to solve real world problems.
+ - :ref:`pkg.drishti` - Real time eye tracking for embedded and mobile devices.
+ - :ref:`pkg.eos` - A lightweight 3D Morphable Face Model fitting library in modern C++11/14
+ - :ref:`pkg.Leptonica` - Open source library containing software that is broadly useful for image processing and image analysis applications
+ - :ref:`pkg.OpenCV` - Open Source Computer Vision Library
+ - :ref:`pkg.Tesseract` - Open Source OCR Engine

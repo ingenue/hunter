@@ -15,7 +15,7 @@ Such developers can do:
 
 * Add more targets to project
 * Add more sources to targets
-* Add C++ flags that doesn't break compatibility (e.g. warnings/optimization)
+* Add C++ flags that does not break compatibility (e.g. warnings/optimization)
 
 Such developers can't do:
 
@@ -28,4 +28,5 @@ See also:
   :maxdepth: 1
 
   Provide credentials to access protected sources <cmake-user/protected-sources>
+  Downloading private data <cmake-user/private-data>
   Using license files <cmake-user/using-license-files>

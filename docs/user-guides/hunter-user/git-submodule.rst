@@ -108,6 +108,19 @@ Run tests to see changes:
   1:   plum-v2 x 2
   1:   pear x 1
 
+.. _possible problems with GIT_SUBMODULE:
+
+Possible problems with GIT_SUBMODULE
+====================================
+
+When using a package via the ``GIT_SUBMODULE`` option, the Hunter defined CMake
+variable ``HUNTER_<package>_VERSION`` is set to the commit hash of the Git
+sub-module. If the ``hunter.cmake`` file of the package contains logic that
+depends on the value of the ``HUNTER_<package>_VERSION`` variable,
+using the ``GIT_SUBMODULE`` option may break the package build. If that is
+the case you can add explicit ``VERSION`` value
+to :ref:`hunter_config <hunter_config>`.
+
 Use subdirectory of submodule
 =============================
 
@@ -204,7 +217,7 @@ Config-ID is ``f743b0b``:
      timeout='none'
   -- Using src='https://github.com/hunter-packages/zlib/archive/v1.2.8-p3.tar.gz'
   ...
-  /usr/bin/cc ... -isystem ~/.hunter/_Base/3b39eff/f743b0b/e1266bb/Install/include ... /.../tif_zip.c
+  /usr/bin/cc ... -isystem ~/.hunter/_Base/3b39eff/e1266bb/f743b0b/Install/include ... /.../tif_zip.c
 
 Now let's add ``LOCAL`` back and run build again:
 
@@ -252,7 +265,7 @@ And **rebuilding** TIFF with newly installed ZLIB, Config-ID changed from
 
 .. code-block:: none
 
-  /usr/bin/cc ... -isystem ~/.hunter/_Base/3b39eff/817c9cb/e1266bb/Install/include ... /.../tif_zip.c
+  /usr/bin/cc ... -isystem ~/.hunter/_Base/3b39eff/e1266bb/817c9cb/Install/include ... /.../tif_zip.c
 
 To achieve the same with ``add_subdirectory`` you have to clone TIFF package too.
 Then you have to be sure that TIFF supports external ZLIB targets configuration,

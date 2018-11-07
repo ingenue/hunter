@@ -4,11 +4,11 @@
 include(hunter_flush_cache_variables)
 include(hunter_internal_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 function(hunter_check_flush_needed hunter_self flush_done)
-  hunter_test_string_not_empty("${flush_done}")
-  hunter_test_string_not_empty("${hunter_self}")
+  hunter_assert_not_empty_string("${flush_done}")
+  hunter_assert_not_empty_string("${hunter_self}")
 
   # Variables must be checked in 'hunter_initialize'
   string(COMPARE EQUAL "${HUNTER_CACHED_ROOT}" "${HUNTER_GATE_ROOT}" is_ok)
@@ -63,6 +63,20 @@ function(hunter_check_flush_needed hunter_self flush_done)
     hunter_status_debug("HUNTER_CONFIGURATION_TYPES changed:")
     hunter_status_debug("  ${HUNTER_CONFIGURATION_TYPES}")
     hunter_status_debug("  ${HUNTER_CACHED_CONFIGURATION_TYPES}")
+    set(flush TRUE)
+  endif()
+
+  string(
+      COMPARE
+      EQUAL
+      "${HUNTER_BUILD_SHARED_LIBS}"
+      "${HUNTER_CACHED_BUILD_SHARED_LIBS}"
+      is_ok
+  )
+  if(NOT is_ok)
+    hunter_status_debug("HUNTER_BUILD_SHARED_LIBS changed:")
+    hunter_status_debug("  ${HUNTER_BUILD_SHARED_LIBS}")
+    hunter_status_debug("  ${HUNTER_CACHED_BUILD_SHARED_LIBS}")
     set(flush TRUE)
   endif()
 

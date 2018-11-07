@@ -261,6 +261,105 @@ hunter_add_version(
     a5dadedaa53f2c44e3207fd5c7edc8211cae3f83
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.23"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.23.tar.gz"
+    SHA1
+    a05102ed3f68cb79da70751c9e89e54daa64c0be
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.24"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.24.tar.gz"
+    SHA1
+    d2aced482704a11ff5c5029750b2fb6f9671f622
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.25"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.25.tar.gz"
+    SHA1
+    23182e08840d09cb521c362aaa7e695b7c7e3d5b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.27"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.27.tar.gz"
+    SHA1
+    57f9015d9bba46c7720ac103efcd86b17ad12952
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.28"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.28.tar.gz"
+    SHA1
+    940db41b3200ae6be0a559a2f3c0ba10ebb74e41
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.29"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.29.tar.gz"
+    SHA1
+    e18fc889ffcff5ee14d6d201acc4b7126222f915
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.30"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.30.tar.gz"
+    SHA1
+    5b3df0153d8b64a008ffd1dca192c087b5c6b1a3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.31"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.31.tar.gz"
+    SHA1
+    34bcbb076116de994fdd563c2fe071d3c0d24aa5
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    QtCMakeExtra
+    VERSION
+    "1.0.32"
+    URL
+    "https://github.com/hunter-packages/QtCMakeExtra/archive/v1.0.32.tar.gz"
+    SHA1
+    98fbb41190b629d65bee86b4cfadbd0556503b1a
+)
+
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(QtCMakeExtra)
 hunter_download(PACKAGE_NAME QtCMakeExtra)

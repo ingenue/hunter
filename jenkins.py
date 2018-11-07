@@ -54,11 +54,6 @@ def run():
       help='Remove old testing directories except `Download` directory'
   )
   parser.add_argument(
-      '--verbose',
-      action='store_true',
-      help='Verbose output'
-  )
-  parser.add_argument(
       '--disable-builds',
       action='store_true',
       help='Disable building of package (useful for checking package can be loaded from cache)'
@@ -67,9 +62,6 @@ def run():
       '--upload',
       action='store_true',
       help='Upload cache to server and run checks (clean up will be triggered, same as --clear-except-download)'
-  )
-  parser.add_argument(
-      '--skip-raw', action='store_true', help="Skip uploading of raw files"
   )
 
   parsed_args = parser.parse_args()
@@ -90,47 +82,24 @@ def run():
   if not project_dir:
     sys.exit('Expected environment variable PROJECT_DIR')
 
-  # Check broken builds --
-  if (project_dir == 'examples/Boost-filesystem') and (toolchain == 'analyze'):
-    print('Skip (https://github.com/ruslo/hunter/issues/25)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/Boost-system') and (toolchain == 'analyze'):
-    print('Skip (https://github.com/ruslo/hunter/issues/26)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'mingw'):
-    print('Skip (https://github.com/ruslo/hunter/issues/28)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'ios-7-0'):
-    print('Skip (https://github.com/ruslo/hunter/issues/29)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'xcode'):
-    print('Skip (https://github.com/ruslo/hunter/issues/30)')
-    sys.exit(0)
-
   ci = os.getenv('TRAVIS') or os.getenv('APPVEYOR')
   if (ci and toolchain == 'dummy'):
     print('Skip build: CI dummy (workaround)')
     sys.exit(0)
-  # -- end
 
   verbose = True
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/CLAPACK') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
-
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/GSL') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
+  env_verbose = os.getenv('VERBOSE')
+  if env_verbose:
+    if env_verbose == '0':
+      verbose = False
+    elif env_verbose == '1':
+      verbose = True
+    else:
+      sys.exit(
+          'Environment variable VERBOSE: expected 0 or 1, got "{}"'.format(
+              env_verbose
+          )
+      )
 
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
@@ -216,6 +185,13 @@ def run():
   if parsed_args.all_release:
     args += ['HUNTER_CONFIGURATION_TYPES=Release']
 
+  if parsed_args.upload:
+    passwords = os.path.join(
+        cdir, 'maintenance', 'upload-password-template.cmake'
+    )
+    args += ['HUNTER_RUN_UPLOAD=ON']
+    args += ['HUNTER_PASSWORDS_PATH={}'.format(passwords)]
+
   args += ['--verbose']
   if not verbose:
     args += ['--discard', '10']
@@ -229,29 +205,6 @@ def run():
   subprocess.check_call(args)
 
   if parsed_args.upload:
-    upload_script = os.path.join(cdir, 'maintenance', 'upload-cache-to-github.py')
-
-    print('Uploading cache')
-    call_args = [
-        sys.executable,
-        upload_script,
-        '--username',
-        'ingenue',
-        '--repo-owner',
-        'ingenue',
-        '--repo',
-        'hunter-cache',
-        '--cache-dir',
-        os.path.join(hunter_root, '_Base', 'Cache'),
-        '--temp-dir',
-        os.path.join(hunter_root, '__TEMP')
-    ]
-
-    if parsed_args.skip_raw:
-      call_args.append('--skip-raw')
-
-    subprocess.check_call(call_args)
-
     seconds = 60
     print(
         'Wait for GitHub changes became visible ({} seconds)...'.format(seconds)
@@ -283,6 +236,9 @@ def run():
         'TESTING_URL={}'.format(hunter_url),
         'TESTING_SHA1={}'.format(hunter_sha1)
     ]
+    if not verbose:
+      args += ['--discard', '10']
+      args += ['--tail', '200']
 
     print('Execute command: [')
     for i in args:

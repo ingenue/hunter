@@ -10,7 +10,7 @@ include(hunter_internal_error)
 include(hunter_sanity_checks)
 include(hunter_status_debug)
 include(hunter_status_print)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 # Continue initialization of key variables (also see 'hunter_initialize')
 #   * calculate toolchain-id
@@ -19,8 +19,12 @@ macro(hunter_finalize)
   # Check preconditions
   hunter_sanity_checks()
 
-  list(APPEND HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
-  list(REMOVE_DUPLICATES HUNTER_CACHE_SERVERS)
+  string(COMPARE EQUAL "${HUNTER_CACHE_SERVERS}" "" _is_empty)
+  if(_is_empty)
+    hunter_status_debug("Using default cache server")
+    set(HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
+  endif()
+
   hunter_status_debug("List of cache servers:")
   foreach(_server ${HUNTER_CACHE_SERVERS})
     hunter_status_debug("  * ${_server}")
@@ -63,20 +67,16 @@ macro(hunter_finalize)
   # * Read HUNTER_GATE_* variables
   # * Check cache HUNTER_* variables is up-to-date
   # * Update cache if needed
+  # * define HUNTER_ID_PATH
+  # * define HUNTER_TOOLCHAIN_ID_PATH
+  # * define HUNTER_CONFIG_ID_PATH
   hunter_apply_gate_settings()
 
   string(SUBSTRING "${HUNTER_SHA1}" 0 7 HUNTER_ID)
   string(SUBSTRING "${HUNTER_CONFIG_SHA1}" 0 7 HUNTER_CONFIG_ID)
   string(SUBSTRING "${HUNTER_TOOLCHAIN_SHA1}" 0 7 HUNTER_TOOLCHAIN_ID)
 
-  set(HUNTER_ID_PATH "${HUNTER_CACHED_ROOT}/_Base/${HUNTER_ID}")
-  set(HUNTER_CONFIG_ID_PATH "${HUNTER_ID_PATH}/${HUNTER_CONFIG_ID}")
-  set(
-      HUNTER_TOOLCHAIN_ID_PATH
-      "${HUNTER_CONFIG_ID_PATH}/${HUNTER_TOOLCHAIN_ID}"
-  )
-
-  set(HUNTER_INSTALL_PREFIX "${HUNTER_TOOLCHAIN_ID_PATH}/Install")
+  set(HUNTER_INSTALL_PREFIX "${HUNTER_CONFIG_ID_PATH}/Install")
   list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}")
 
   # Override pkg-config default search path
@@ -99,14 +99,17 @@ macro(hunter_finalize)
   hunter_status_debug(
       "HUNTER_CONFIGURATION_TYPES: ${HUNTER_CACHED_CONFIGURATION_TYPES}"
   )
+  hunter_status_debug(
+      "HUNTER_BUILD_SHARED_LIBS: ${HUNTER_BUILD_SHARED_LIBS}"
+  )
 
   set(_id_info "[ Hunter-ID: ${HUNTER_ID} |")
-  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} |")
-  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} ]")
+  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} |")
+  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} ]")
 
   hunter_status_print("${_id_info}")
 
-  set(HUNTER_CACHE_FILE "${HUNTER_TOOLCHAIN_ID_PATH}/cache.cmake")
+  set(HUNTER_CACHE_FILE "${HUNTER_CONFIG_ID_PATH}/cache.cmake")
   hunter_create_cache_file("${HUNTER_CACHE_FILE}")
 
   if(MSVC)
@@ -130,12 +133,12 @@ macro(hunter_finalize)
 
   ### 1. Clear all '<NAME>_ROOT' variables (cache, environment, ...)
   ### 2. Set '<NAME>_ROOT' or 'HUNTER_<name>_VERSION' variables
-  set(HUNTER_ALLOW_CONFIG_LOADING YES)
+  set(__HUNTER_ALLOW_FINAL_CONFIG_LOADING YES)
   include("${HUNTER_CONFIG_ID_PATH}/config.cmake")
-  set(HUNTER_ALLOW_CONFIG_LOADING NO)
+  set(__HUNTER_ALLOW_FINAL_CONFIG_LOADING NO)
 
-  hunter_test_string_not_empty("${HUNTER_INSTALL_PREFIX}")
-  hunter_test_string_not_empty("${CMAKE_BINARY_DIR}")
+  hunter_assert_not_empty_string("${HUNTER_INSTALL_PREFIX}")
+  hunter_assert_not_empty_string("${CMAKE_BINARY_DIR}")
 
   file(
       WRITE
@@ -170,6 +173,13 @@ macro(hunter_finalize)
     hunter_user_error(
         "CMAKE_CROSSCOMPILING should be set on iOS."
         " Please update your toolchain."
+    )
+  endif()
+
+  string(COMPARE EQUAL "${HUNTER_TLS_VERIFY}" "" _is_empty)
+  if(_is_empty)
+    hunter_user_error(
+        "HUNTER_TLS_VERIFY is empty, please update HunterGate module"
     )
   endif()
 endmacro()

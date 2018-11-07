@@ -5,11 +5,23 @@
 
 include(hunter_add_version)
 include(hunter_cacheable)
+include(hunter_cmake_args)
 include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
 
 # https://xcb.freedesktop.org/dist/
+hunter_add_version(
+    PACKAGE_NAME
+    xcb-proto
+    VERSION
+    "1.13"
+    URL
+    "https://xcb.freedesktop.org/dist/xcb-proto-1.13.tar.bz2"
+    SHA1
+    f7fa35ab59af18cecadbe83fe705281dcfd82ffd
+)
+
 hunter_add_version(
     PACKAGE_NAME
     xcb-proto
@@ -35,6 +47,11 @@ hunter_add_version(
 
 hunter_configuration_types(xcb-proto CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
+hunter_cmake_args(
+    xcb-proto
+    CMAKE_ARGS
+    PKGCONFIG_EXPORT_TARGETS=xcb-proto
+)
 hunter_cacheable(xcb-proto)
 hunter_download(
     PACKAGE_NAME xcb-proto

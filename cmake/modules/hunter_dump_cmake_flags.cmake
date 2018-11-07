@@ -5,15 +5,17 @@ include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_internal_error)
 include(hunter_get_lang_standard_flag)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * Boost
+# * libxml2
 # * OpenSSL
 # * odb-boost
 function(hunter_dump_cmake_flags)
-  cmake_parse_arguments(x "SKIP_INCLUDES" "CPPFLAGS" "" "${ARGV}")
+  cmake_parse_arguments(x "SKIP_INCLUDES;SKIP_PIC" "CPPFLAGS" "" "${ARGV}")
   # -> x_SKIP_INCLUDES
+  # -> x_SKIP_PIC
   # -> x_CPPFLAGS
 
   string(COMPARE NOTEQUAL "${x_UNPARSED_ARGUMENTS}" "" has_unparsed)
@@ -23,7 +25,7 @@ function(hunter_dump_cmake_flags)
 
 
   if(IOS)
-    hunter_test_string_not_empty("${IOS_SDK_VERSION}")
+    hunter_assert_not_empty_string("${IOS_SDK_VERSION}")
     string(COMPARE EQUAL "${IOS_DEPLOYMENT_SDK_VERSION}" "" _no_deployment_sdk_version)
     if(_no_deployment_sdk_version)
       set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_SDK_VERSION}")
@@ -32,20 +34,45 @@ function(hunter_dump_cmake_flags)
       set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
       set(CMAKE_C_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
     endif()
-  
+
     if(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE)
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fembed-bitcode")
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fembed-bitcode")
-    endif()  
+    endif()
+  endif()
+
+  if(APPLE AND NOT IOS)
+    if(NOT "${CMAKE_OSX_SYSROOT}" STREQUAL "")
+      if(NOT EXISTS "${CMAKE_OSX_SYSROOT}")
+        hunter_internal_error("Not exists: '${CMAKE_OSX_SYSROOT}'")
+      endif()
+      # Note: do not use quotes here, see OpenSSL-1.0.2 example
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+    endif()
+
+    if(NOT "${CMAKE_OSX_DEPLOYMENT_TARGET}" STREQUAL "")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    endif()
   endif()
 
   set(cppflags "")
 
   if(ANDROID)
-    # --sysroot=/path/to/sysroot not added by CMake 3.7+
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --sysroot=${CMAKE_SYSROOT}")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --sysroot=${CMAKE_SYSROOT}")
-    set(cppflags "${cppflags} --sysroot=${CMAKE_SYSROOT}")
+    string(COMPARE EQUAL "${CMAKE_SYSROOT_COMPILE}" "" no_sysroot_compile)
+    if(no_sysroot_compile)
+      set(android_sysroot "${CMAKE_SYSROOT}")
+    else()
+      set(android_sysroot "${CMAKE_SYSROOT_COMPILE}")
+
+      hunter_assert_not_empty_string("${CMAKE_SYSROOT}")
+      set(CMAKE_EXE_LINKER_FLAGS "--sysroot=${CMAKE_SYSROOT} ${CMAKE_EXE_LINKER_FLAGS}")
+    endif()
+
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --sysroot=${android_sysroot}")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --sysroot=${android_sysroot}")
+    set(cppflags "${cppflags} --sysroot=${android_sysroot}")
 
     if(NOT x_SKIP_INCLUDES)
       foreach(x ${CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES})
@@ -54,12 +81,15 @@ function(hunter_dump_cmake_flags)
             "${CMAKE_CXX_FLAGS} ${CMAKE_INCLUDE_SYSTEM_FLAG_CXX} ${x}"
         )
         set(
-            CMAKE_C_FLAGS
-            "${CMAKE_C_FLAGS} ${CMAKE_INCLUDE_SYSTEM_FLAG_CXX} ${x}"
-        )
-        set(
             cppflags
             "${cppflags} ${CMAKE_INCLUDE_SYSTEM_FLAG_CXX} ${x}"
+        )
+      endforeach()
+
+      foreach(x ${CMAKE_C_STANDARD_INCLUDE_DIRECTORIES})
+        set(
+            CMAKE_C_FLAGS
+            "${CMAKE_C_FLAGS} ${CMAKE_INCLUDE_SYSTEM_FLAG_CXX} ${x}"
         )
       endforeach()
     endif()
@@ -123,14 +153,14 @@ function(hunter_dump_cmake_flags)
 
   # PIC {
   string(COMPARE NOTEQUAL "${CMAKE_CXX_COMPILE_OPTIONS_PIC}" "" has_pic)
-  if(CMAKE_POSITION_INDEPENDENT_CODE AND has_pic)
+  if(CMAKE_POSITION_INDEPENDENT_CODE AND has_pic AND NOT x_SKIP_PIC)
     set(
         CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_COMPILE_OPTIONS_PIC}"
     )
   endif()
 
   string(COMPARE NOTEQUAL "${CMAKE_C_COMPILE_OPTIONS_PIC}" "" has_pic)
-  if(CMAKE_POSITION_INDEPENDENT_CODE AND has_pic)
+  if(CMAKE_POSITION_INDEPENDENT_CODE AND has_pic AND NOT x_SKIP_PIC)
     set(
         CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_COMPILE_OPTIONS_PIC}"
     )

@@ -1,4 +1,5 @@
 Containers
 ----------
 
- * `sparsehash <https://github.com/ruslo/hunter/wiki/pkg.sparsehash>`_ - C++ associative containers
+ * :ref:`pkg.sparsehash` - C++ associative containers
+ * :ref:`pkg.sds` - Simple Dynamic Strings library for C

@@ -25,3 +25,10 @@ _Base
 # emacs junk
 *.*~
 *~
+
+# Clion
+.idea/
+
+# Visual Studio
+.vs
+CMakeSettings.json

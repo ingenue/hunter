@@ -1,15 +1,8 @@
 Using Nexus Repository manager as binary cache server
 -----------------------------------------------------
 
-Hunter allows to upload binary cache to any server. If you want to use `GitHub <https://github.com>`__
-as a cache server, then you can execute
-`python script <https://github.com/ruslo/hunter/blob/master/maintenance/upload-cache-to-github.py>`__
-which is uploading cache binaries to `GitHub <https://github.com>`__
-directly. As an alternative you can also use ``Nexus Repository Manager``.
-
-.. seealso::
-
-  :doc:`/faq/why-binaries-from-server-not-used`
+It is possible to use ``Nexus Repository Manager`` as a binary cache server
+instead of GitHub.
 
 Nexus installation
 ==================
@@ -48,9 +41,17 @@ The simplest way to upload local cache binaries to Nexus server is by using
 Configuring Hunter to use Nexus
 ===============================
 
-To configure ``Hunter`` to use ``Nexus`` server, you must perform the following
-step:
+Set :ref:`HUNTER_CACHE_SERVERS <hunter_cache_servers>`
+variable before ``HunterGate`` to configure ``Hunter`` to use ``Nexus`` server:
 
 .. code-block:: cmake
 
-   list(APPEND HUNTER_CACHE_SERVERS "http://my.nexus.server.com/content/repositories/hunter/cache")
+  set(
+      HUNTER_CACHE_SERVERS
+      "http://my.nexus.server.com/content/repositories/hunter/cache"
+      CACHE
+      STRING
+      "Hunter cache servers"
+  )
+
+  HunterGate(URL "..." SHA1 "...")

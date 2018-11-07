@@ -17,9 +17,14 @@ Set minimum CMake version:
 
 .. code-block:: cmake
 
-  cmake_minimum_required(VERSION 3.0)
+  cmake_minimum_required(VERSION 3.2)
 
 Copy `HunterGate`_ module to your project and include it:
+
+.. code-block:: none
+
+  > mkdir cmake
+  > wget https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake -O cmake/HunterGate.cmake
 
 .. code-block:: cmake
 
@@ -49,7 +54,7 @@ Let's download and install ``boost.{regex,system,filesystem}``:
 
   hunter_add_package(Boost COMPONENTS regex system filesystem)
 
-Hunter part is done, now well known CMake-style kung fu (see `pkg.boost`_):
+Hunter part is done, now well known CMake-style kung fu (see :ref:`pkg.Boost`):
 
 .. code-block:: cmake
 
@@ -63,7 +68,7 @@ Summarize:
 .. code-block:: cmake
   :emphasize-lines: 5-6, 11
 
-  cmake_minimum_required(VERSION 3.0)
+  cmake_minimum_required(VERSION 3.2)
 
   include("cmake/HunterGate.cmake")
   HunterGate(
@@ -90,4 +95,3 @@ Build it:
 .. _other options: https://github.com/hunter-packages/gate#effects
 .. _HunterGate: https://github.com/hunter-packages/gate
 .. _notes: https://github.com/hunter-packages/gate#notes
-.. _pkg.boost: https://github.com/ruslo/hunter/wiki/pkg.boost

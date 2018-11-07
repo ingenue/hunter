@@ -4,7 +4,11 @@
 Why binaries from server not used?
 ==================================
 
-If settings and environment of your local project doesn't match environment
+.. seealso::
+
+  * :ref:`Using GitHub cache server <uploading to server>`
+
+If settings and environment of your local project does not match environment
 of Travis/AppVeyor services (this is where binaries usually uploaded from)
 you will see ``Cache miss`` message and package will be build locally:
 
@@ -133,11 +137,11 @@ in logs:
 
 .. code-block:: none
 
-  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/cef4daf/aa85dd8
+  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/aa85dd8
 
 .. code-block:: shell
 
-  > openssl sha1 /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > openssl sha1 /.../_Base/86b1bc9/aa85dd8/toolchain.info
   SHA1(toolchain.info)= aa85dd86f2feefe76397d7b624ccb6c09d971fe5
 
 You can see that there is no ``aa85dd8`` entry in cache:
@@ -159,7 +163,7 @@ Compare both files to figure out what's wrong:
 
 .. code-block:: shell
 
-  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/aa85dd8/toolchain.info
   ...
   < #define __GNUC_MINOR__ 8
   < #define __GNUC_PATCHLEVEL__ 1
@@ -174,126 +178,3 @@ Compare both files to figure out what's wrong:
   > #define __GNUG__ 5
 
 It means that local GCC version is ``5.4.0`` and server version is ``4.8.1``.
-
-.. _uploading to server:
-
-Uploading to server
--------------------
-
-It is possible to upload Hunter binary cache to the server.
-For now only GitHub hosting supported. All big raw ``*.tar.bz2`` archives
-uploaded as assets to release with name ``cache`` (directory layout doesn't
-matter) and all small text files with meta information uploaded directly to
-branch ``master`` (directory layout matters) (see
-`hunter-cache <https://github.com/ingenue/hunter-cache>`__ as example).
-
-.. note::
-
-  If you have shared folder in your network there is no need to use
-  any scripts, you can just set ``HUNTER_ROOT`` variable to location of this
-  directory.
-
-This job can be
-done using Python script ``maintenance/upload-cache-to-github.py`` (which may be
-called by ``jenkins.py --upload``). Note that downloading from server done by
-``file(DOWNLOAD ...)`` CMake commands, so client is still CMake-only based.
-
-Extra servers can be added by modifying variable
-`HUNTER_CACHE_SERVERS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_cache_servers>`__
-before ``HunterGate`` command:
-
-.. code-block:: cmake
-
-  list(APPEND HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
-  HunterGate(URL ... SHA1 ...)
-
-If you want to check that there is no 3rd party builds triggered by CMake and
-all packages downloaded from server you can use
-`HUNTER_DISABLE_BUILDS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_disable_builds>`__
-variable. Also variable
-`HUNTER_USE_CACHE_SERVERS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_use_cache_servers>`__
-can be used to specify downloading policy.
-
-Uploading from CI servers like Travis or AppVeyor require to store password as
-an environment variable ``GITHUB_USER_PASSWORD`` (note that you can create
-separate "bot" account to manage all this stuff).
-
-Travis CI
-~~~~~~~~~
-
-Excerpts from documentation (`1 <https://docs.travis-ci.com/user/encryption-keys>`__
-and `2 <https://docs.travis-ci.com/user/environment-variables/#Encrypted-Variables>`__)
-for OS X  (see also `this repo <https://github.com/forexample/github-binary-release>`__):
-
-.. code-block:: shell
-
-  > git clone https://github.com/ingenue/hunter # your repository here
-      # note that this is repository where password **will be used** in .travis.yml
-      # this repository is a fork of https://github.com/ruslo/hunter
-  > cd hunter
-  > gem install travis # for Ubuntu it will be 'sudo gem install travis'
-  > travis login --pro # in case repository is private
-  > travis encrypt GITHUB_USER_PASSWORD=very-secured-password
-  ...
-  Please add the following to your .travis file:
-
-  secure: "..."
-
-If you have problems with installing ``travis`` try to install
-`ruby from brew <http://stackoverflow.com/questions/31972968/cant-install-gems-on-os-x-el-capitan>`__:
-
-.. code-block:: shell
-
-  > brew install ruby
-
-Now you can add secure variable to ``.travis.yml`` matrix:
-
-.. code-block:: yaml
-
-  env:
-    global:
-      - secure: "uTvW...TAE="
-    matrix:
-      - PROJECT_DIR=... TOOLCHAIN=...
-      - PROJECT_DIR=... TOOLCHAIN=...
-
-.. seealso::
-
-  * `.travis.yml example <https://github.com/ingenue/hunter/blob/4f3b76832d2404c90af98c2557ec06ec7da9eb06/.travis.yml>`__
-
-.. note::
-
-  Instead of a password you can use GitHub token. Follow
-  `those instructions <https://help.github.com/articles/creating-an-access-token-for-command-line-use/>`__
-  and under the ``Select scopes`` choose ``public_repo``
-  (``Access public repositories``).
-
-.. warning::
-
-  If you're planning to use "bot" account, login to GitHub with **bot**
-  credentials.
-
-AppVeyor
-~~~~~~~~
-
-Use `this form <https://ci.appveyor.com/tools/encrypt>`__ to encrypt your
-password. I.e. put ``very-secured-password`` to this form, run ``Encrypt`` and
-copy/paste results into your ``appveyor.yml`` (note that you should be logged in
-as an **owner** of repository):
-
-.. code-block:: yaml
-
-  environment:
-    global:
-      GITHUB_USER_PASSWORD:
-        secure: 2Sd...g==
-    matrix:
-      - TOOLCHAIN=...
-        PROJECT_DIR=...
-
-      - TOOLCHAIN=...
-        PROJECT_DIR=...
-
-.. seealso::
-
-  * `appveyor.yml example <https://github.com/ingenue/hunter/blob/4f3b76832d2404c90af98c2557ec06ec7da9eb06/appveyor.yml>`__

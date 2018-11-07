@@ -1,8 +1,13 @@
 .. Copyright (c) 2016-2017, Ruslan Baratov
 .. All rights reserved.
 
+
+.. _layout deployed:
+
 Deployed
 --------
+
+.. _layout deployed common:
 
 Common
 ======
@@ -51,6 +56,8 @@ For example we have file ``toolchain.info`` and we want to save it in
 
 * Unlock ``<Toolchain-ID>/cmake.lock``
 
+.. _layout deployed base:
+
 Base
 ====
 
@@ -61,23 +68,23 @@ is to allow Hunter to be deployed inside
 for development.
 
 .. code-block:: none
-  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54
+  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52
 
   _Base/
   ├── <Hunter-ID>/
   │   ├── cmake.lock
   │   ├── SHA1                                 # SHA1 of Hunter archive
   │   ├── DONE
-  │   └── <Config-ID>/
+  │   └── <Toolchain-ID>/
   │       ├── cmake.lock
-  │       ├── SHA1                             # SHA1 of 'config.cmake'
+  │       ├── SHA1                             # SHA1 of 'toolchain.info'
   │       ├── DONE
-  │       ├── config.cmake                     # CMake file with unified hunter_config commands
-  │       └── <Toolchain-ID>/
+  │       ├── toolchain.info
+  │       └── <Config-ID>/
   │           ├── cmake.lock
-  │           ├── SHA1                         # SHA1 of 'toolchain.info'
+  │           ├── SHA1                         # SHA1 of 'config.cmake'
   │           ├── DONE
-  │           ├── toolchain.info
+  │           ├── config.cmake                 # CMake file with unified hunter_final_config commands
   │           ├── cache.cmake
   │           ├── Install/                     # Main directory with installed packages (global)
   │           │   ├── include/
@@ -116,17 +123,19 @@ for development.
   ├── Cellar/                                  # see below
   └── Cache/                                   # see below
 
+.. _layout deployed download:
+
 Download
 ========
 
 Directory for storing archives with sources. Sources will be unpacked to
-``<Hunter-ID>/<Config-ID>/<Toolchain-ID>/Build/<Package>/Source`` directory.
+``<Hunter-ID>/<Toolchain-ID>/<Config-ID>/Build/<Package>/Source`` directory.
 One exception is archives with Hunter itself since we have no information
-about ``<Config-ID>/<Toolchain-ID>`` part (we have to calculate them using
+about ``<Toolchain-ID>/<Config-ID>`` part (we have to calculate them using
 Hunter code).
 
 .. code-block:: none
-  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30
+  :emphasize-lines: 2,4,6,8,10,12,14,16,18
 
   Download/
   ├── <Package>/
@@ -148,6 +157,8 @@ Hunter code).
                └── Unpacked/             # Unpacked Hunter archive (HUNTER_SELF)
 
 
+.. _layout deployed cache:
+
 Cache
 =====
 
@@ -163,7 +174,7 @@ arguments, dependencies, etc.).
   ├─ raw/
   │  └─ <cache>.tar.bz2
   └─ meta/
-     └─ <toolchain-id>/
+     └─ <Toolchain-ID>/
         ├─ cmake.lock
         ├─ SHA1                                   # SHA1 of toolchain.info
         ├─ DONE
@@ -202,6 +213,9 @@ arguments, dependencies, etc.).
                                 ├─ CACHE.DONE     # stamp: deps.info and cache.sha1 created and ready to be used
                                 └─ from.server    # info downloaded from server, no need to upload this entry
 
+
+.. _layout deployed cellar:
+
 Cellar
 ======
 
@@ -209,7 +223,7 @@ Cellar directory consists of unpacked raw cache archives and source archives of
 ``url_sha1_unpack`` packages:
 
 .. code-block:: none
-  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42
+  :emphasize-lines: 2,4,6,8,10,12
 
   Cellar/
   └─ <sha1>/                                      # SHA1 of unpacked archive
@@ -223,3 +237,41 @@ Cellar directory consists of unpacked raw cache archives and source archives of
         ├─ link-all.sh                            # link script
         ├─ licenses/
         └─ raw/                                   # directory with unpacked files
+
+.. _layout deployed private data:
+
+PrivateData
+===========
+
+Directory with
+:doc:`downloaded private data </user-guides/cmake-user/private-data>`.
+
+If ``FILE`` specified (download only):
+
+.. code-block:: none
+  :emphasize-lines: 2,4,6,8
+
+  PrivateData/
+  └─ <sha1>/                 # SHA1 of downloaded file
+     └─ <id>/                # first 7 digits of SHA1
+        ├─ cmake.lock
+        ├─ SHA1
+        ├─ DONE
+        ├─ unpack.DONE       # stamp: download operation finished
+        ├─ param.file        # value specified in `FILE`
+        └─ raw/<filename>    # downloaded file
+
+If ``FILE`` not specified (download archive and unpack):
+
+.. code-block:: none
+  :emphasize-lines: 2,4,6,8
+
+  PrivateData/
+  └─ <sha1>/                 # SHA1 of downloaded file
+     └─ <id>/                # first 7 digits of SHA1
+        ├─ cmake.lock
+        ├─ SHA1
+        ├─ DONE
+        ├─ unpack.DONE       # stamp: download and unpack operation finished
+        ├─ archive.file      # downloaded archive
+        └─ raw/*             # unpacked directory

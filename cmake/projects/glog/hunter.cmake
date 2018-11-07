@@ -13,6 +13,28 @@ hunter_add_version(
     PACKAGE_NAME
     glog
     VERSION
+    "0.3.5-p2"
+    URL
+    "https://github.com/hunter-packages/glog/archive/v0.3.5-p2.tar.gz"
+    SHA1
+    3e95e5bcfb5c9d20c3391b72f831a285a3fc238f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    glog
+    VERSION
+    "0.3.5-p1"
+    URL
+    "https://github.com/hunter-packages/glog/archive/v0.3.5-p1.tar.gz"
+    SHA1
+    64a9da4feec196071fa7f9cd2963e9f193213a67
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    glog
+    VERSION
     "0.3.5-p0"
     URL
     "https://github.com/hunter-packages/glog/archive/v0.3.5-p0.tar.gz"
@@ -43,7 +65,7 @@ hunter_add_version(
 )
 
 # explicitly remove dependency on gflags (only needed for tests)
-hunter_cmake_args(glog CMAKE_ARGS WITH_GFLAGS=OFF)
+hunter_cmake_args(glog CMAKE_ARGS WITH_GFLAGS=OFF BUILD_TESTING=OFF)
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(glog)
