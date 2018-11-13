@@ -7,11 +7,11 @@ environment:
       secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
 
   matrix:
-    # FIXME: iOS is not supported by this package
+
     #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
     #  PROJECT_DIR: examples\NLopt
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    
+
     #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #  PROJECT_DIR: examples\NLopt
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
