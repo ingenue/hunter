@@ -45,11 +45,13 @@ matrix:
         PROJECT_DIR=examples/lehrfempp
         HUNTER_JOBS_NUMBER=2
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/lehrfempp
-        HUNTER_JOBS_NUMBER=2
+    # FIXME: android is not supported by this package
+    # * https://travis-ci.org/craffael/hunter/jobs/484811042
+    # - os: linux
+      # env: >
+        # TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        # PROJECT_DIR=examples/lehrfempp
+        # HUNTER_JOBS_NUMBER=2
     # FIXME: static analyzer issues warnings
     # * https://travis-ci.com/craffael/hunter/jobs/159341596
     # - os: linux
@@ -80,19 +82,23 @@ matrix:
 
     # OSX {
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/lehrfempp
-        HUNTER_JOBS_NUMBER=4
-
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/lehrfempp
-        HUNTER_JOBS_NUMBER=4
+    # FIXME: xcode 9.4 not supported by this package
+    # * https://travis-ci.org/craffael/hunter/jobs/484811046
+    # - os: osx
+      # osx_image: xcode9.4
+      # env: >
+        # TOOLCHAIN=osx-10-13-make-cxx14
+        # PROJECT_DIR=examples/lehrfempp
+        # HUNTER_JOBS_NUMBER=4
+        
+    # FIXME: xcode 9.4 not supported by this package
+    # * https://travis-ci.org/craffael/hunter/jobs/484811047
+    # - os: osx
+      # osx_image: xcode9.4
+      # env: >
+        # TOOLCHAIN=osx-10-13-cxx14
+        # PROJECT_DIR=examples/lehrfempp
+        # HUNTER_JOBS_NUMBER=4
 
     # FIXME: iOS is not supported by this package
     # * https://travis-ci.com/craffael/hunter/jobs/159341602
