@@ -43,15 +43,17 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/sleef
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/sleef
+    # TODO: https://github.com/shibatch/sleef/issues/249 (upstream issue)
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #    PROJECT_DIR=examples/sleef
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/sleef
+    # TODO: https://travis-ci.org/xsacha/hunter/jobs/504999917
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/sleef
 
     - os: linux
       env: >
@@ -78,17 +80,19 @@ matrix:
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/sleef
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/sleef
+    # TODO: https://travis-ci.org/xsacha/hunter/jobs/504999922
+    #- os: osx
+    #  osx_image: xcode9.4
+    #  env: >
+    #    TOOLCHAIN=osx-10-13-cxx14
+    #    PROJECT_DIR=examples/sleef
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/sleef
+    # TODO: https://github.com/shibatch/sleef/issues/249 (upstream issue)
+    #- os: osx
+    #  osx_image: xcode9.4
+    #  env: >
+    #    TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #    PROJECT_DIR=examples/sleef
 
     # }
 
