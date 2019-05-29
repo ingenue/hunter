@@ -11,18 +11,22 @@ environment:
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\catkin
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\catkin
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\catkin
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\catkin
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
     # FIXME: mingw and msys can't find python package catkin, which could point to some
     # python paths not being set up correctly after catkin is installed to the cache
