@@ -55,6 +55,7 @@ matrix:
       env: >
         TOOLCHAIN=analyze-cxx17
         PROJECT_DIR=examples/ros_common_msgs
+        VERBOSE=0
 
     - os: linux
       env: >
