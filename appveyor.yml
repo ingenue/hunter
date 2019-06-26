@@ -9,28 +9,34 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\rosconsole
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
 install:
   # Python 3
@@ -39,6 +45,9 @@ install:
   # Install Python package 'requests', 'gitpython'
   - cmd: pip install requests
   - cmd: pip install gitpython
+
+  # Install ROS build dependencies
+  - cmd: pip install empy catkin_pkg
 
   # Install latest Polly toolchains and scripts
   - cmd: appveyor DownloadFile https://github.com/ruslo/polly/archive/master.zip
