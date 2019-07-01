@@ -8,7 +8,7 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx11"
+    - TOOLCHAIN: "vs-15-2017-win64-cxx14"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
@@ -16,11 +16,11 @@ environment:
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx11"
+    - TOOLCHAIN: "mingw-cxx14"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx11"
+    - TOOLCHAIN: "msys-cxx14"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
