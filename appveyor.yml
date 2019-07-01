@@ -20,10 +20,6 @@ environment:
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx14"
-      PROJECT_DIR: examples\thrift
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
