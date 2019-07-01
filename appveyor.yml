@@ -8,15 +8,7 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\thrift
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\thrift
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    - TOOLCHAIN: "vs-15-2017-win64-cxx11"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
@@ -24,11 +16,11 @@ environment:
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
+    - TOOLCHAIN: "mingw-cxx11"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
+    - TOOLCHAIN: "msys-cxx11"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
