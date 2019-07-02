@@ -8,17 +8,33 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx14"
-      PROJECT_DIR: examples\thrift
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: https://ci.appveyor.com/project/JochenGuck/hunter/builds/25660219/job/efu4x48fg3jiif4j
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # FIXME: https://ci.appveyor.com/project/JochenGuck/hunter/builds/25660219/job/7kdimgn83trt602o
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # FIXME: https://ci.appveyor.com/project/JochenGuck/hunter/builds/25660219/job/11ngc8n7bu4cc0ad
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx14"
+    - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\thrift
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME: https://ci.appveyor.com/project/JochenGuck/hunter/builds/25660219/job/l0rwrr60fse01oor
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\thrift
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
@@ -69,4 +85,4 @@ branches:
   except:
     - pkg.template
     - /^pr\..*/
-    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+- /^v[0-9]+\.[0-9]+\.[0-9]+$/
