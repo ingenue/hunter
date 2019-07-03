@@ -43,11 +43,10 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Assimp
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/313393099
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/Assimp
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Assimp
 
     # minizip failed: https://travis-ci.org/ingenue/hunter/jobs/139781287
     # - os: linux

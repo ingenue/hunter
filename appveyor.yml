@@ -8,20 +8,17 @@ environment:
 
   matrix:
 
-    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
-    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\Assimp
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\Assimp
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
-    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\Assimp
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\Assimp
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\Assimp
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\Assimp
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Assimp
@@ -31,8 +28,7 @@ environment:
       PROJECT_DIR: examples\Assimp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME: upload from local machine
-    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.627
+    # FIXME: https://ci.appveyor.com/project/rbsheth/hunter/builds/25433127/job/7m0q0sg3brvsadsh
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\Assimp
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
