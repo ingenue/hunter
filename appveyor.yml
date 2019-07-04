@@ -32,6 +32,14 @@ environment:
 #      PROJECT_DIR: examples\ncursesw
 #      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\ncursesw
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
