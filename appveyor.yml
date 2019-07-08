@@ -32,13 +32,13 @@ environment:
 #      PROJECT_DIR: examples\readline
 #      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
- # Extra {
-  
- - TOOLCHAIN: "dummy"
-   PROJECT_DIR: examples\readline
-   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+# Extra {
 
- # }
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\readline
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+# }
 
 install:
   # Python 3
