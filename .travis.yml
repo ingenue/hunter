@@ -93,8 +93,8 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/botan
 
-    # FIXME: Trying to compile Botan configured as x86_32 with non-x86_32 compiler.
-    #        https://travis-ci.org/Bjoe/hunter/jobs/553955668#L716
+    # FIXME: File not exists: ...botan/Install/lib/pkgconfig/botan-2.pc
+    #        https://travis-ci.org/Bjoe/hunter/jobs/555629952#L2844
     #- os: osx
     #  osx_image: xcode9.4
     #  env: >
