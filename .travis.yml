@@ -43,25 +43,33 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/readline
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/readline
+# Not supported
+# https://travis-ci.org/tstack/hunter/jobs/555792948
+#    - os: linux
+#      env: >
+#        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+#        PROJECT_DIR=examples/readline
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/readline
+# Not supported
+# https://travis-ci.org/tstack/hunter/jobs/555792949
+#    - os: linux
+#      env: >
+#        TOOLCHAIN=analyze-cxx17
+#        PROJECT_DIR=examples/readline
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/readline
+# Not supported
+# https://travis-ci.org/tstack/hunter/jobs/555792950
+#    - os: linux
+#      env: >
+#        TOOLCHAIN=sanitize-address-cxx17
+#        PROJECT_DIR=examples/readline
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/readline
+# Not supported
+# https://travis-ci.org/tstack/hunter/jobs/555792951
+#    - os: linux
+#      env: >
+#        TOOLCHAIN=sanitize-leak-cxx17
+#        PROJECT_DIR=examples/readline
 
     - os: linux
       env: >
@@ -84,11 +92,13 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/readline
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/readline
+# Not supported
+# https://travis-ci.org/tstack/hunter/jobs/555792962
+#    - os: osx
+#      osx_image: xcode9.4
+#      env: >
+#        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+#        PROJECT_DIR=examples/readline
 
     # }
 
