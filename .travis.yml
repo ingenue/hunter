@@ -98,6 +98,17 @@ matrix:
 
     # }
 
+    # Extra {
+
+    # https://github.com/ruslo/hunter/issues/1914
+    - os: osx
+      osx_image: xcode10.2
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/ncursesw
+
+    # }
+
 install:
   # Info about OS
   - uname -a
