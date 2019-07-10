@@ -89,6 +89,12 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/ncursesw
 
+    - os: osx
+      osx_image: xcode10.2
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/ncursesw
+
 # FIXME: not supported by this package
 #    - os: osx
 #      osx_image: xcode9.4
