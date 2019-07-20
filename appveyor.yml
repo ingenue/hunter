@@ -8,13 +8,17 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME LINK : fatal error LNK1181: cannot open input file 'build\obj\lib\asn1_alg_id.obj'
+    #              See https://ci.appveyor.com/project/Bjoe/hunter/build/job/32f8fxt7ponba8i5#L856
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\botan
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME LINK : fatal error LNK1181: cannot open input file 'build\obj\lib\asn1_alg_id.obj'
+    #              See https://ci.appveyor.com/project/Bjoe/hunter/build/job/vdffvhoh3m1sjk30#L884
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\botan
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\botan
