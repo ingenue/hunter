@@ -28,9 +28,11 @@ environment:
       PROJECT_DIR: examples\botan
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME 'nmake' is not recognized as an internal or external command
+    #       See https://ci.appveyor.com/project/Bjoe/hunter/build/job/e20qgyq4i9uke9oe#L453
+    # - TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\botan
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "msys-cxx17"
       PROJECT_DIR: examples\botan
