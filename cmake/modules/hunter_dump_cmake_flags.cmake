@@ -12,6 +12,7 @@ include(hunter_assert_not_empty_string)
 # * libxml2
 # * OpenSSL
 # * odb-boost
+# * ncursesw
 function(hunter_dump_cmake_flags)
   cmake_parse_arguments(x "SKIP_INCLUDES;SKIP_PIC" "CPPFLAGS" "" "${ARGV}")
   # -> x_SKIP_INCLUDES
@@ -41,6 +42,8 @@ function(hunter_dump_cmake_flags)
     endif()
   endif()
 
+  set(cppflags "")
+
   if(APPLE AND NOT IOS)
     if(NOT "${CMAKE_OSX_SYSROOT}" STREQUAL "")
       if(NOT EXISTS "${CMAKE_OSX_SYSROOT}")
@@ -49,15 +52,15 @@ function(hunter_dump_cmake_flags)
       # Note: do not use quotes here, see OpenSSL-1.0.2 example
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+      set(cppflags "-isysroot ${CMAKE_OSX_SYSROOT}")
     endif()
 
     if(NOT "${CMAKE_OSX_DEPLOYMENT_TARGET}" STREQUAL "")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+      set(cppflags "${cppflags} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
     endif()
   endif()
-
-  set(cppflags "")
 
   if(ANDROID)
     string(COMPARE EQUAL "${CMAKE_SYSROOT_COMPILE}" "" no_sysroot_compile)
