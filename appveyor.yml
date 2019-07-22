@@ -20,13 +20,17 @@ environment:
     #   PROJECT_DIR: examples\botan
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME File not exists: botan-2.pc
+    #       See https://ci.appveyor.com/project/Bjoe/hunter/build/job/lxv6doii4hsj618a#L1622
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\botan
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME File not exists: botan-2.pc
+    #       See https://ci.appveyor.com/project/Bjoe/hunter/build/job/1ipl7v2shr4d6h5k#L1526
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\botan
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME 'nmake' is not recognized as an internal or external command
     #       See https://ci.appveyor.com/project/Bjoe/hunter/build/job/e20qgyq4i9uke9oe#L453
