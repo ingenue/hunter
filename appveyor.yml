@@ -6,7 +6,7 @@ environment:
     GITHUB_USER_PASSWORD:
       secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
-  matrix:
+  # matrix:
 
     # FIXME LINK : fatal error LNK1181: cannot open input file 'build\obj\lib\asn1_alg_id.obj'
     #              See https://ci.appveyor.com/project/Bjoe/hunter/build/job/32f8fxt7ponba8i5#L856
