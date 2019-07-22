@@ -38,9 +38,11 @@ environment:
     #  PROJECT_DIR: examples\botan
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\botan
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME /bin/sh: nmake: command not found
+    #       See https://ci.appveyor.com/project/Bjoe/hunter#L444
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\botan
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
