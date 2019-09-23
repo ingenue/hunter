@@ -24,13 +24,15 @@ environment:
       PROJECT_DIR: examples\libjpeg-turbo
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\libjpeg-turbo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/27606367/job/6m7vuuljf2o3eauy
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\libjpeg-turbo
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\libjpeg-turbo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/27606367/job/i3o4f66w0w38mh30
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\libjpeg-turbo
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
