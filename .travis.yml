@@ -20,6 +20,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
+      - python3-setuptools
       - g++-7
 
 dist:
@@ -27,7 +28,7 @@ dist:
 
 env:
   global:
-    - secure: "DJPGduVmEHr3v/n+4DlCBud5gDgoAo6FKcLO9lWKQ1aBkiK8qXttTr7XDIZ/CgnWBKjp3YiwteKAQrQZPlNRza7Cm4J74SqAXHt/SQuRLy7p4X7XM71UQ3YNllXl1WTmEEPLznVOoR0za1PEcvjeHlLJ2Bk9CqnCQbWt4ie35hBUv1v2Ft9M4mw+oZJElWrVY7COudF4bPFd/AaVMmsohjRIyKG8bgcnsl1RtI/tTZbFQn6VIz8Jf/P+uULB2B+ddPMpXSCBxxLsNupZ3ddEl5hfdH4FGFrlUaj47zj+1s6rG38DsIX4pT0/jXZxJ8hkvqn/QOd1lprAAgnSbgsBd2tWLUYQHG+mfaRFpG0WzVzNZpx1sjyroKEi8mbusYrENuzmhWCs3GNVSe0bImfLnfnaoRiKHloTtaTp+RNf9ftiSCRyyr9OKCJvK9fUzyYZeCZBGzYzlrsY3AgbyBYTQMrK8NwImuTMWpWCPfP8Lb/gy2+1W+AouASF8w3nzObJxe/R/3XvjCYABMmgo34YXv/Qzv8kpQW7PSJgYXDdjx9dNgrnlwz5PxjoXAkGd3BEIFRMBMSYwOJPA4ZIXbojCJ9yGXHSSJZLO+5qdtt35/EhLQJkZBe1Cx0YordYuqDLS9rN3iaxPoI2zIYVEBQbrjFBLgwivoZNV+D2hx0WsGc="
+    - secure: "s2o8nxRX/i7BSWsxlogBnyOGNO+3MhbcQrrU5y/Kk5+FwflN1vN+EwcR/kuE7U/O+gD8/ea+e0E8SSCkDwSj30NKZajYym2/DF0YSPNag1PGO9X2x53D4+clrhLPd89++bJpeOrAln1wYrYLLLFPMEq8Veo8g2ql9EHHWwwOqNM3jTPXg1fg4TOGSjgzFB3JnDo1Wjccc7eUj/nJcEMasxIBNg0n9/kjO+b9VYgxF3YVUMCnn+pdLah/AdnbwLWyvoWUz9nhRbXZx236rccFO5tzbKWON6NauIs4hiYxUC/Bu8nw5SZsjto4NwmrX0t7fAsUbMIUo4WBbI2zfao1oao0g/2HQj/QeY5yj+mkeaXosqdUbDZe2J+A+xjHu1fD6JI75jtnpOhFGYN5mPfq6fOiLcMn6Vr67T9NB1NvUpmRJ6sqzm48yxcNc9tmvsUz7BLDNbSN3YRNZ5XCVRnQfY9j1yc88oBvCPMtduUQyu5rd+c6mJ6zBhjJJvu7BM6OlscWPqiJm6+857wcDoBBDlMipZsIrrshOlUmfgyNgdrm/c1wEwDoRcnlb1hR+tKT5y653vytSs8cRJ+uG7+anofuTJJ/Der/a1A/P5ttkp2HGrAcWq4u0zYIpIiOsUlJ0uHcSl0DLQwB4JJgZBiBEibWjWqfjdXwkSVrcj833bU="
 
 matrix:
   include:

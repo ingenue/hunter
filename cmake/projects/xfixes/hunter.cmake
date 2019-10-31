@@ -10,7 +10,7 @@ include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
 
-# http://www.x.org/releases/individual/proto/
+# https://www.x.org/releases/individual/lib/
 hunter_add_version(
     PACKAGE_NAME
     xfixes
@@ -20,6 +20,17 @@ hunter_add_version(
     "http://www.x.org/releases/individual/lib/libXfixes-5.0.1.tar.bz2"
     SHA1
     e14fa072bd70b30eef47391cac637bdb4de9e8a3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    xfixes
+    VERSION
+    "5.0.3"
+    URL
+    "https://www.x.org/releases/individual/lib/libXfixes-5.0.3.tar.bz2"
+    SHA1
+    ca86342d129c02435a9ee46e38fdf1a04d6b4b91
 )
 
 hunter_configuration_types(xfixes CONFIGURATION_TYPES Release)

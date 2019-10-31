@@ -65,6 +65,39 @@ hunter_add_version(
     fcaaae43f0950ca362b487a793159c786b264346
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    PNG
+    VERSION
+    "1.6.26-p4"
+    URL
+    "https://github.com/hunter-packages/libpng/archive/v1.6.26-p4.tar.gz"
+    SHA1
+    a6ac9a2e7c5f23b062c252466ae448cae9e771b3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    PNG
+    VERSION
+    "1.6.26-p5"
+    URL
+    "https://github.com/hunter-packages/libpng/archive/v1.6.26-p5.tar.gz"
+    SHA1
+    fbf7c49f144a32567a1b63cb658a2a4584a091fa
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    PNG
+    VERSION
+    "1.6.26-p6"
+    URL
+    "https://github.com/hunter-packages/libpng/archive/v1.6.26-p6.tar.gz"
+    SHA1
+    dee61a3f48ed2d436a4e7fb8cdaf3cabaa3e604e
+)
+
 hunter_cmake_args(PNG CMAKE_ARGS PNG_TESTS=OFF)
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
