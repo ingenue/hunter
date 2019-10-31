@@ -28,9 +28,10 @@ environment:
       PROJECT_DIR: examples\GTest
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\GTest
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/28520595/job/ca479gq0fdxo4t72
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\GTest
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
