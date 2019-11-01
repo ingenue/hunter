@@ -227,6 +227,28 @@ hunter_add_version(
     76c6aec038f7d7258bf5c4f45c4817b34039d285
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.10.0-p0"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/v1.10.0-p0.tar.gz"
+    SHA1
+    f7c72be12120e018f53cda0e0daa26fab5da7dfc
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.10.0-p1"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/v1.10.0-p1.tar.gz"
+    SHA1
+    06a1f667f200ff94d38b608e44c3c8061c7b8f2f
+)
+
 if(HUNTER_GTest_VERSION VERSION_LESS 1.8.0)
   set(_gtest_license "LICENSE")
 else()
@@ -237,6 +259,7 @@ hunter_cmake_args(
     GTest
     CMAKE_ARGS
     HUNTER_INSTALL_LICENSE_FILES=${_gtest_license}
+    gtest_force_shared_crt=TRUE
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)

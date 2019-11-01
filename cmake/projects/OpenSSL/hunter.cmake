@@ -25,6 +25,39 @@ hunter_add_version(
     PACKAGE_NAME
     OpenSSL
     VERSION
+    "1.1.1a"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_1a.tar.gz"
+    SHA1
+    0a7d7382e3e608fc037d4955a0ddad224acc1fc8
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.1.1b"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_1b.tar.gz"
+    SHA1
+    1b09930a6099c6c8fa15dd6c6842e134e65e0a31
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.1.1c"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_1c.tar.gz"
+    SHA1
+    eb59b090bd757e30b676fb5e80c25ddb5a2f9511
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
     "1.1.0"
     URL
     "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0.tar.gz"
@@ -107,6 +140,61 @@ hunter_add_version(
     "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0i.tar.gz"
     SHA1
     f1748778e06f41e41e9585fd8815339867f22d30
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.1.0j"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0j.tar.gz"
+    SHA1
+    489c7a35a4ee2ab06006b2ee26791445b67293a4
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.1.0k"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0k.tar.gz"
+    SHA1
+    0a753deaa01df3a231759f3ed01fb0b8e14b5d59
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2s"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2s.tar.gz"
+    SHA1
+    d3439055ac91862f69089e394f2d29832653de4d
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2r"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2r.tar.gz"
+    SHA1
+    d4933f2974572edffa395cf9f90e6485652dc3a5
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2q"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2q.tar.gz"
+    SHA1
+    d9d0876c1d3a06896308b0e0bf67a85c3dd87258
 )
 
 hunter_add_version(
@@ -421,4 +509,4 @@ if(MINGW)
 endif()
 
 hunter_cacheable(OpenSSL)
-hunter_download(PACKAGE_NAME OpenSSL PACKAGE_INTERNAL_DEPS_ID "25")
+hunter_download(PACKAGE_NAME OpenSSL PACKAGE_INTERNAL_DEPS_ID "29")

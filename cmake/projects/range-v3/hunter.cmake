@@ -31,11 +31,39 @@ hunter_add_version(
     d2b3c31c66c4c7d0b11798e370af4e1e372a307b
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    range-v3
+    VERSION
+    0.4.0-01ccd0e5-p0
+    URL
+    "https://github.com/hunter-packages/range-v3/archive/0.4.0-01ccd0e5-p0.tar.gz"
+    SHA1
+    7ae50752d40beb489935b73d521c14b4c147cfd5
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    range-v3
+    VERSION
+    0.5.0
+    URL
+    "https://github.com/ericniebler/range-v3/archive/0.5.0.tar.gz"
+    SHA1
+    5c0eac44a710f85cae6dc11aa7577ec90f30c5a8
+)
+
 hunter_cmake_args(
     range-v3
     CMAKE_ARGS
     BUILD_DOCS=FALSE
-	BUILD_TESTS=FALSE
+    BUILD_TESTS=FALSE
+    BUILD_TESTING=FALSE
+    RANGE_V3_EXAMPLES=FALSE
+    RANGE_V3_PERF=FALSE
+    RANGE_V3_DOCS=FALSE
+    RANGE_V3_TESTS=FALSE
+    RANGE_V3_HEADER_CHECKS=FALSE
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)

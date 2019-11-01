@@ -32,6 +32,11 @@ hunter_assert_not_empty_string("@HUNTER_PACKAGE_BUILD_DIR@")
 hunter_assert_not_empty_string("@HUNTER_PACKAGE_INSTALL_PREFIX@")
 hunter_assert_not_empty_string("@HUNTER_INSTALL_PREFIX@")
 
+set(
+    HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES
+    "@HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES@"
+)
+
 hunter_autotools_project("@HUNTER_EP_NAME@"
     HUNTER_SELF
       "@HUNTER_SELF@"
@@ -64,9 +69,12 @@ if(NOT default_pkgconfig)
   set(DEPENDS_ON_PACKAGES ${DEPENDS_ON_PKGCONFIGS})
 endif()
 
+set(PKG_GENERATE_SHARED "${BUILD_SHARED_LIBS}")
+
 foreach(PKG_CONFIG_MODULE ${PKGCONFIG_EXPORT_TARGETS})
   # Use:
   # * DEPENDS_ON_PACKAGES
+  # * PKG_GENERATE_SHARED
   configure_file(
       "@HUNTER_GLOBAL_SCRIPT_DIR@/pkgconfig-export-targets.cmake.in"
       "@HUNTER_PACKAGE_INSTALL_PREFIX@/lib/cmake/${PKG_CONFIG_MODULE}/${PKG_CONFIG_MODULE}Config.cmake"

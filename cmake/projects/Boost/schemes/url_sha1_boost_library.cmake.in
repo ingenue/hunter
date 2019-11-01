@@ -24,6 +24,7 @@ include(hunter_status_print)
 include(hunter_assert_not_empty_string)
 include(hunter_user_error)
 include(hunter_parse_boost_config_macros)
+include(hunter_parse_cmake_args_for_keyword)
 
 hunter_status_debug("Scheme: url_sha1_boost_library")
 
@@ -69,6 +70,9 @@ elseif("@APPLE@")
   # Using CMAKE_AR on OSX leads to error (b2 use 'libtool'):
   # * https://travis-ci.org/ingenue/hunter/jobs/204617507
   set(use_cmake_archiver FALSE)
+elseif("@QNX@")
+  set(toolset_name "qcc")
+  set(toolset_version "")
 elseif("@CMAKE_COMPILER_IS_GNUCXX@")
   set(toolset_name "gcc")
   set(toolset_version "")
@@ -82,7 +86,7 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
   set(toolset_name "intel")
   set(toolset_version "")
 else()
-  hunter_fatal_error("TODO: set toolset for boost" WIKI "error.boost.toolset")
+  hunter_fatal_error("TODO: set toolset for boost" ERROR_PAGE "error.boost.toolset")
 endif()
 
 hunter_dump_cmake_flags()
@@ -106,7 +110,14 @@ endif()
 
 if("@MSVC@")
   set(boost_compiler  "@CMAKE_CXX_COMPILER@")
-  string(REPLACE "/" "\\" boost_compiler "${boost_compiler}")
+
+  # Note:
+  # - '/' will not work
+  # - single '\' lead to bug
+  #
+  # See issue:
+  # - https://github.com/boostorg/build/issues/426#issuecomment-482564740
+  string(REPLACE "/" "\\\\" boost_compiler "${boost_compiler}")
 else()
   set(boost_compiler "@CMAKE_CXX_COMPILER@")
 endif()
@@ -126,7 +137,7 @@ if(is_mpi)
           "MPI is required. Please install it. For example MS-MPI: "
           "http://msdn.microsoft.com/en-us/library/bb524831%28v=vs.85%29.aspx"
       )
-      hunter_fatal_error("MPI is required" WIKI "error.boost.mpi.on.windows")
+      hunter_fatal_error("MPI is required" ERROR_PAGE "error.boost.mpi.on.windows")
     endif()
     get_filename_component(MPI_DIR "${MPI_CXX_INCLUDE_PATH}/.." ABSOLUTE)
     string(REPLACE "/" "\\\\" MPI_DIR "${MPI_DIR}")
@@ -190,6 +201,8 @@ if(BOOST_BUILD_STATIC)
 else()
   set(link_opts link=shared)
 endif()
+
+# Modify Boost user jam file
 
 set(toolset_full_name ${toolset_name})
 string(COMPARE NOTEQUAL "${toolset_version}" "" has_toolset_version)
@@ -267,11 +280,15 @@ endif()
 
 if(MSVC)
   # See 'boost_compiler' section
+
+  # Note: Flags should be quoted:
+  # - https://github.com/boostorg/build/issues/426#issuecomment-482564740
+
   foreach(cxx_flag ${cxx_flags_list})
     file(
         APPEND
         ${boost_user_jam}
-        "  <compileflags>${cxx_flag}\n"
+        "  <compileflags>\"${cxx_flag}\"\n"
     )
   endforeach()
 endif()
@@ -282,6 +299,52 @@ file(
     ";\n"
     "${using_mpi}\n"
 )
+
+# handle requested python version if such is specified
+hunter_parse_cmake_args_for_keyword(
+  CMAKE_ARGS "@HUNTER_Boost_CMAKE_ARGS@"
+  KEYWORD PYTHON_VERSION
+  OUTPUT python_version
+)
+
+# set up paths for python in boost.user.jam
+if(NOT python_version STREQUAL "")
+  find_package(PythonInterp ${python_version} EXACT QUIET)
+  if(NOT PYTHONINTERP_FOUND)
+    hunter_user_error("Python Interpreter for Python version ${python_version} not found.")
+  endif()
+  set(python_executable ${PYTHON_EXECUTABLE})
+  find_package(PythonLibs ${python_version} EXACT QUIET)
+  if(NOT PYTHONLIBS_FOUND)
+    hunter_user_error("Python runtime library directory for Python version ${python_version} not found.")
+  endif()
+  # get the main Python include directory containing pyconfig.h
+  list(LENGTH PYTHON_INCLUDE_DIRS python_include_dir_list_length)
+  if(python_include_dir_list_length EQUAL 1)
+    set(python_include_directory "${PYTHON_INCLUDE_DIRS}")
+  else()
+    list(GET PYTHON_INCLUDE_DIRS 0 python_include_directory)
+  endif()
+  # get directory of optimized library
+  list(LENGTH PYTHON_LIBRARIES python_libraries_list_length)
+  if(python_libraries_list_length EQUAL 1)
+    set(python_optimized_library_path "${PYTHON_LIBRARIES}")
+  else()
+    list(GET PYTHON_LIBRARIES 1 python_optimized_library_path)
+  endif()
+  get_filename_component(python_library_directory "${python_optimized_library_path}" DIRECTORY)
+  if("@MSVC@")
+    string(REPLACE "/" "\\\\" python_executable "${python_executable}")
+    string(REPLACE "/" "\\\\" python_include_directory "${python_include_directory}")
+    string(REPLACE "/" "\\\\" python_library_directory "${python_library_directory}")
+  endif()
+  file(
+    APPEND ${boost_user_jam}
+    "using python  : ${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} : \"${python_executable}\" : \"${python_include_directory}\" : \"${python_library_directory}\" ;\n"
+  )
+endif()
+
+# Handle ./b2 build options
 
 list(APPEND build_opts ${b2_component_opts})
 
@@ -335,6 +398,10 @@ else()
   set(b2_cmd "./b2")
   set(bootstrap_cmd "./bootstrap.sh")
   set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
+endif()
+
+if(compiler_is_clang AND NOT CMAKE_CROSSCOMPILING)
+  list(APPEND bootstrap_cmd "--with-toolset=clang")
 endif()
 
 if("@MINGW@")

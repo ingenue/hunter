@@ -188,8 +188,9 @@ Installation after fix:
 Add package to Hunter
 =====================
 
-Next let's assume user ``hunterbox`` is trying to add ``hunter_box_1`` project
-to Hunter.
+Next let's assume user `hunterbox <https://github.com/hunterbox>`__ is
+trying to add `hunter_box_1 <https://github.com/hunterbox/hunter_box_1>`__
+project to Hunter.
 
 .. admonition:: Examples on GitHub
 
@@ -201,7 +202,7 @@ C++:
 
 .. code-block:: cpp
 
-  #include <hunter_box_1.hpp>
+  #include <hunter_box_1/hunter_box_1.hpp>
 
   int main() {
     hunter_box_1::foo();
@@ -304,6 +305,36 @@ Add this information to ``cmake/projects/hunter_box_1/hunter.cmake`` file:
   hunter_cacheable(hunter_box_1)
   hunter_download(PACKAGE_NAME hunter_box_1)
 
+Consistency
+===========
+
+Please keep Git tag and ``VERSION`` in consistent state.
+For example if ``URL`` is:
+
+.. code-block:: cmake
+  :emphasize-lines: 3-4
+
+  hunter_add_version(
+      # ...
+      URL
+      "https://github.com/hunterbox/hunter_box_1/archive/v1.3.15-da39a3e-p6.tar.gz"
+      # ...
+  )
+
+Then ``VERSION`` should be:
+
+.. code-block:: cmake
+  :emphasize-lines: 3-4
+
+  hunter_add_version(
+      # ...
+      VERSION
+      1.3.15-da39a3e-p6
+      URL
+      "https://github.com/hunterbox/hunter_box_1/archive/v1.3.15-da39a3e-p6.tar.gz"
+      # ...
+  )
+
 CMake options
 =============
 
@@ -313,12 +344,15 @@ disable those. If such an option is not disabled by default use
 ``hunter_cmake_args``:
 
 .. code-block:: cmake
-  :emphasize-lines: 3, 6-8
+  :emphasize-lines: 1, 6, 9-11
 
-  # bottom of cmake/projects/Foo/hunter.cmake
+  include(hunter_cmake_args)
 
+  # ...
+
+  # bottom of cmake/projects/foo/hunter.cmake
   hunter_cmake_args(
-      Foo
+      foo
       CMAKE_ARGS
           FOO_BUILD_EXAMPLES=OFF
           FOO_BUILD_TESTS=OFF
@@ -326,7 +360,7 @@ disable those. If such an option is not disabled by default use
   )
 
   hunter_pick_scheme(DEFAULT url_sha1_cmake)
-  hunter_download(PACKAGE_NAME Foo)
+  hunter_download(PACKAGE_NAME foo)
 
 Options set by ``hunter_cmake_args`` have lower precedence than options set
 by ``hunter_config(... CMAKE_ARGS ...)`` (see
@@ -345,8 +379,8 @@ Default build type(s) can be set by ``hunter_configuration_types``:
 
 .. code-block:: cmake
 
-  hunter_configuration_types(Foo CONFIGURATION_TYPES Release)
-  hunter_download(PACKAGE_NAME Foo)
+  hunter_configuration_types(foo CONFIGURATION_TYPES Release)
+  hunter_download(PACKAGE_NAME foo)
 
 User can overwrite this default by using
 `custom <https://github.com/ruslo/hunter/wiki/example.custom.config.id>`__
@@ -422,6 +456,48 @@ To locally check if the documentation is still building you can run:
   [hunter/docs]> source ./jenkins.sh
   (_venv) [hunter/docs]> ./make.sh
 
+If the documentation contains spelling errors or unrecognized names, the
+documentation test build will fail and report the unrecognized strings. Fix
+any spelling errors and test the build again. Any remaining errors can be
+fixed by adding all correct but unrecognized names, string, or terms to the
+``spelling`` header at the top of the document entry
+``docs/packages/pkg/bar-baz.rst``. In this example,
+``bar-baz`` would be a package name that is not in the dictionary.
+
+.. code-block:: none
+  :emphasize-lines: 1-4
+
+  .. spelling::
+
+    bar
+    baz
+
+  .. index::
+    single: unsorted ; bar-baz
+
+  .. _pkg.bar-baz:
+
+Add entries for each term until the test build completes successfully.
+
+Common mistake
+==============
+
+Please do not forget to substitute ``===``.
+
+Good:
+
+.. code-block:: none
+
+  hunter_box_1
+  ============
+
+Bad:
+
+.. code-block:: none
+
+  hunter_box_1
+  ===
+
 Commit
 ======
 
@@ -439,6 +515,8 @@ Now save all changes by doing a commit:
   [hunter]> git add examples/hunter_box_1/
 
   [hunter]> git commit -m "Add 'hunter_box_1' package"
+
+.. _testing locally:
 
 Testing locally
 ===============
@@ -510,7 +588,7 @@ and platforms. Hunter uses `AppVeyor <https://appveyor.com>`__ to test for
 Windows (Visual Studio, NMake, Ninja, MinGW, MSYS) and
 `Travis <https://travis-ci.org>`__ to test
 for Linux (GCC, Clang, Android, Clang Analyzer, Sanitize Address, Sanitize Leak)
-and for OSX (Clang + Makefile, Xcode, iOS).
+and for macOS (Clang + Makefile, Xcode, iOS).
 
 Register your Hunter fork:
 
@@ -557,7 +635,7 @@ Branch for testing package ``<name>``.
 
 * Name: ``pkg.<name>``
 * Repository: https://github.com/ingenue/hunter
-* Testing: Package ``<name>`` on Windows/Linux/OSX hosts
+* Testing: Package ``<name>`` on Windows/Linux/macOS hosts
 
 Real testing happens in ``pkg.<name>`` branch of ``ingenue/hunter`` repository.
 E.g. branch ``pkg.gtest``:
@@ -715,8 +793,8 @@ Workaround for GCC internal error
 =================================
 
 Travis machines have 32 logical cores and Hunter will use all of them by default
-(e.g. build with ``make -j32``). Sometimes It may cause an internal GCC
-compiler error:
+(e.g. build with ``make -j32``). Because of this system may run out of memory
+and GCC may get killed:
 
 .. code-block:: none
 
@@ -737,6 +815,10 @@ the :ref:`HUNTER_JOBS_NUMBER <hunter jobs number env>` environment variable:
 Example:
 
 * https://github.com/ingenue/hunter/blob/c1e12ba21940b8418d1e3d596b653ad3bf588e11/.travis.yml#L41-L45
+
+.. admonition:: Stackoverflow
+
+  * https://stackoverflow.com/a/35011967
 
 Excluding tests
 ===============
@@ -760,7 +842,8 @@ Please follow these guidelines when disabling toolchains:
   :diff: ci/.travis-OLD.yml
 
 If no working toolchain is left for ``.travis.yml`` or ``appveyor.yml`` then
-comment out everything and add ``TOOLCHAIN=dummy`` test.
+comment out everything and add ``TOOLCHAIN=dummy`` test (see
+`example <https://github.com/ingenue/hunter/blob/b52b18e7ac51cec76c63a61dd81195c5bfc2a160/appveyor.yml#L35-L41>`__).
 
 Go to branch ``pr.pkg.hunter_box_1`` with CI configs and commit this change
 there:

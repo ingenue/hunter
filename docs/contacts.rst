@@ -1,5 +1,11 @@
-.. Copyright (c) 2016, Ruslan Baratov
+.. Copyright (c) 2016-2019, Ruslan Baratov
 .. All rights reserved.
+
+.. spelling::
+
+  Gitter
+  refactor
+  spam
 
 Contacts
 --------
@@ -7,19 +13,18 @@ Contacts
 Public
 ======
 
-* Feel free to open new `issue`_ if you want to ask any question
-* Public chat room on |gitter_public|
+* Project is **closed** for public contributions
 
 Private
 =======
 
-* Write me to ruslan_baratov@yahoo.com
-* Private chat room on |gitter_private|
+* Write me at ruslan_baratov@yahoo.com
+* Private chat room on Gitter: https://gitter.im/ruslo
 
-.. _issue: https://github.com/ruslo/hunter/issues/new
+Hire
+====
 
-.. |gitter_public| image:: https://badges.gitter.im/ruslo/hunter.svg
-  :target: https://gitter.im/ruslo/hunter
-
-.. |gitter_private| image:: https://badges.gitter.im/ruslo/hunter.svg
-  :target: https://gitter.im/ruslo
+I’m available for hire as a freelance developer for all types of Hunter
+development (add/maintain/update package, fix bugs, design/implement
+new features, etc.) or CMake development (introduce configuration from
+scratch, refactor existing code, hunterize, etc.).
