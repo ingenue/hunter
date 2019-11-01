@@ -20,17 +20,19 @@ environment:
       PROJECT_DIR: examples\spdlog
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\spdlog
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/28558170/job/gu43usbv6ooc9x33
+     # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+     #   PROJECT_DIR: examples\spdlog
+     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\spdlog
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\spdlog
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/28558170/job/c805dxav66m3covd
+     # - TOOLCHAIN: "msys-cxx17"
+     #   PROJECT_DIR: examples\spdlog
+     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
