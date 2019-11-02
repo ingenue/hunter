@@ -93,6 +93,16 @@ matrix:
 
     # }
 
+    # Extra {
+
+    - os: osx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-arm64
+        PROJECT_DIR=examples/chromium_zlib
+
+    # }
+
 install:
   # Info about OS
   - uname -a
