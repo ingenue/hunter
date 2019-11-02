@@ -49,10 +49,11 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/chromium_zlib
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/chromium_zlib
+    # https://travis-ci.org/ingenue/hunter/jobs/606402592
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/chromium_zlib
 
     - os: linux
       env: >

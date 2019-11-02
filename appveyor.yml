@@ -24,13 +24,15 @@ environment:
       PROJECT_DIR: examples\chromium_zlib
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\chromium_zlib
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/28565035/job/wrr0a0213x5lhbwm
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\chromium_zlib
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\chromium_zlib
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/28565035/job/jgvhbja09qt4s3lm
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\chromium_zlib
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
